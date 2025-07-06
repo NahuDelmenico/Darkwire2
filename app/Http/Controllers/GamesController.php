@@ -80,7 +80,10 @@ class GamesController extends Controller
             
             return redirect()
             ->route('admin.games')
-            ->with('feedback.message' , 'La noticia <b>'. e($request->name).'</b> fue <b>publicada</b> exitosamente');
+            ->with([
+                'feedback.message' => 'El juego <b>' . e($request->name) . '</b> fue <b>creado</b> exitosamente',
+                'feedback.type' => 'success' // success, error, warning, info
+            ]);
         }
 
         public function destroy(int $id){
@@ -92,7 +95,10 @@ class GamesController extends Controller
 
             return redirect()
             ->route('admin.games')
-            ->with('feedback.message' , 'La noticia <b>'. e($game->name) .'</b> fue <b>eliminada</b> exitosamente');
+            ->with([
+                'feedback.message' => 'El juego <b>' . e($game->name) . '</b> fue <b>eliminado</b> exitosamente',
+                'feedback.type' => 'danger' // success, error, warning, info
+            ]);
 
         }
 
@@ -107,7 +113,7 @@ class GamesController extends Controller
 
         public function edit(int $id)
         {
-             $categories = Category::all();
+            $categories = Category::all();
 
             return view('games.edit', [
                 'categories' => $categories,
@@ -142,11 +148,12 @@ class GamesController extends Controller
             ]);
 
             $game->update($request->all());
-
-            
             
             return redirect()
             ->route('admin.games')
-            ->with('feedback.message' , 'La noticia <b>'. e($request->name).'</b> fue <b>actualizo</b> exitosamente');
+            ->with([
+                'feedback.message' => 'El juego <b>' . e($game->name) . '</b> fue <b>actualizado</b> exitosamente',
+                'feedback.type' => 'info' // success, error, warning, info
+            ]);
         }
 }

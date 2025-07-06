@@ -29,6 +29,13 @@
             <!-- Contenido principal -->
             <main class="col-12 col-md-9 col-lg-10 bg-dark text-white py-4">
 
+                @if(session('feedback.message'))
+                    <div class="alert alert-{{ session('feedback.type', 'success') }} alert-dismissible fade show" role="alert">
+                        {!! session('feedback.message') !!}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                @endif
+
                 <!-- Header con título y estadísticas -->
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <div>
@@ -54,7 +61,7 @@
                                 <i class="fas fa-search"></i>
                             </span>
                             <input type="text" class="form-control bg-dark border-secondary text-white" 
-                                   placeholder="Buscar por título, autor o contenido..." id="searchInput">
+                            placeholder="Buscar por título, autor o contenido..." id="searchInput">
                         </div>
                     </div>
                     <div class="col-md-3">
