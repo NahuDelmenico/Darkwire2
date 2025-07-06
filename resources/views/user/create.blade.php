@@ -35,13 +35,18 @@
                     @enderror
                 </div>
 
-                <div class=" mb-3">
-                    <label for="password" class="form-label">Contraseña</label>
-                    <textarea class="form-control @error('password') is-invalid @enderror" id="password" name="password" style="height: 300px"
-                    @error('password') arial-invalid="true" arial-errornessage="error-password" @enderror >{{old('password')}} </textarea>
+                <div class="mb-3">
+                    <label class="form-label" for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror"
+                    @error('password') arial-invalid="true" arial-errornessage="error-password" @enderror value="{{old('password')}}">
                     @error('password')
                         <div id="error-password" class="text-danger">{{$message}}</div>
                     @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="password_confirmation">Confirmar Contraseña</label>
+                    <input type="password" id="password_confirmation" name="password_confirmation" class="form-control">
                 </div>
 
                 <div>
