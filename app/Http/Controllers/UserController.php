@@ -69,6 +69,20 @@ class UserController extends Controller
             ]);
         }
 
+        public function destroy(int $id){
+            
+            $user = User::findOrFail($id);
+            
+            $user->delete($id);
+
+
+            return redirect()
+            ->route('admin.users')
+            ->with('feedback.message' , 'La noticia <b>'. e($user->name) .'</b> fue <b>eliminada</b> exitosamente');
+
+        }
+
+
         public function edit(int $id)
         {
             
