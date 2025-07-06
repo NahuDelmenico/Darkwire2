@@ -128,10 +128,6 @@ Route::put('juegos/editar/{id}', [\App\Http\Controllers\GamesController::class, 
 
 // USUARIOS
 
-Route::get('usuarios/{id}', [\App\Http\Controllers\UserController::class, 'view'])
-->name('user.view')
-->middleware('auth')
-;
 
 Route::get('usuarios/crear', [\App\Http\Controllers\UserController::class, 'create'])
 ->name('user.create')
@@ -145,6 +141,7 @@ Route::post('usuarios/crear', [\App\Http\Controllers\UserController::class, 'sto
 
 Route::get('usuarios/editar/{id}', [\App\Http\Controllers\UserController::class, 'edit'])
 ->name('user.edit')
+->whereNumber('id')
 ->middleware('auth')
 ;
 
@@ -166,4 +163,9 @@ Route::get('usuarios/{id}/eliminar', [\App\Http\Controllers\UserController::clas
 ->whereNumber('id')
 ->middleware('auth')
 
+;
+
+Route::get('usuarios/{id}', [\App\Http\Controllers\UserController::class, 'view'])
+->name('user.view')
+->middleware('auth')
 ;
