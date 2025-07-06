@@ -35,12 +35,13 @@
                         <h2 class="mb-1">Gestión de Usuarios</h2>
                         <p class="text-muted mb-0">Administra los usuarios del sistema</p>
                     </div>
+
                     <div class="d-flex align-items-center gap-3">
                         <div class="text-center">
                             <div class="badge bg-info fs-6">{{ $users->count() }}</div>
                             <small class="text-muted d-block">Total</small>
                         </div>
-                        <a class="btn btn-primary" href="#">
+                        <a class="btn btn-primary" href="{{ route('user.create') }}">
                             <i class="fas fa-plus me-2"></i>Crear nuevo usuario
                         </a>
                     </div>

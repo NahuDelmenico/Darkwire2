@@ -44,7 +44,7 @@
                             <div class="badge bg-success fs-6">${{ $games->sum('price') }}</div>
                             <small class="text-muted d-block">Valor Total</small>
                         </div>
-                        <a class="btn btn-primary" href="#">
+                        <a class="btn btn-primary" href="{{route('games.create')}}">
                             <i class="fas fa-plus me-2"></i>Agregar nuevo juego
                         </a>
                     </div>
@@ -163,11 +163,11 @@
                                             <div class="btn-group" role="group">
                                                 <a href="{{route('games.view', ['id' => $game->game_id])}}" class="btn btn-sm btn-outline-info" title="Detalle">Ver detalles</a>
 
-                                                <a href="#" class="btn btn-sm btn-outline-warning" title="Editar">Editar</a>
+                                                <a href="{{route('games.edit', ['id' => $game->game_id])}}" class="btn btn-sm btn-outline-warning" title="Editar">Editar</a>
 
                                                 <a href="#" class="btn btn-sm btn-outline-success" title="Subir portada">Subir portada</a>
 
-                                                <a href="#" class="btn btn-sm btn-outline-danger" title="Eliminar">Eliminar</a>
+                                                <a href="{{route('games.delete', ['id' => $game->game_id])}}" class="btn btn-sm btn-outline-danger" title="Eliminar">Eliminar</a>
                                             </div>
                                         </td>
                                     </tr>
