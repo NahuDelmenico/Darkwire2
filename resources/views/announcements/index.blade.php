@@ -12,11 +12,7 @@
         <p class="w-100 fs-4 font-monospace text-center">
             Desde las últimas actualizaciones hasta los grandes anuncios que marcan el futuro del gaming, te traemos la información más fresca y confiable para que no te pierdas ni un solo detalle de la comunidad gamer.
         </p>
-        @auth
-        <div class="d-flex justify-content-end">
-            <a class="btn btn-primary mt-3 mb-3" href="{{route('announcements.create')}}">Publicar nueva noticia</a>
-        </div>
-        @endauth
+       
     </div>
 
     <div class="d-flex justify-content-center">
@@ -41,10 +37,7 @@
 
                     <div class="w-25 d-flex flex-column align-items-center justify-content-center">
                         <a href="{{route('announcements.view', ['id' => $announcement->announcement_id])}}" style="background-color: 47e72a;" class="btn btn-primary w-75 my-2">Ver mas</a>
-                        @auth
-                        <a href="{{route('announcements.edit',['id' => $announcement->announcement_id])}}" class="btn btn-secondary w-75 my-2">Editar</a>
-                        <a href="{{route('announcements.delete', ['id' => $announcement->announcement_id])}}" class="btn btn-danger w-75 my-2">Eliminar</a>
-                        @endauth
+                        
                     </div>
                 </div>
             </div>

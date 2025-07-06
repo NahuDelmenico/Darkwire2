@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
             AnnouncementSeeder::class,
             UserSeeder::class,
             CategorySeeder::class,
-            
+            GameSeeder::class
 
         ]);
     }

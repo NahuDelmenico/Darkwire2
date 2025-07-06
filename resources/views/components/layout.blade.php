@@ -28,7 +28,7 @@
                     <x-nav-link route="home">Home</x-nav-link>
                     </li>
                     <li class="nav-item">
-                    <x-nav-link route="catalogo">Catálogo</x-nav-link>
+                    <x-nav-link route="games.index">Juegos</x-nav-link>
                     </li>
                     <li class="nav-item">
                     <x-nav-link route="announcements.index">Novedades</x-nav-link>
@@ -74,9 +74,9 @@
                 </div>
                 <div class="col">
                <x-nav-link
-                                route="catalogo"
+                                route="games.index"
                             >
-                               Catalogo
+                               Juegos
                             </x-nav-link>
                 </div>
                 <div class="col">

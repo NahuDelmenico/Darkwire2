@@ -8,9 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'home'])
     ->name('home')
     ;
-Route::get('catalogo', [\App\Http\Controllers\HomeController::class, 'catalogo'])
-    ->name('catalogo')
-    ;
+
 
 // LOGIN
 Route::get('iniciar-sesion', [\App\Http\Controllers\AuthController::class, 'login'])
@@ -87,3 +85,13 @@ Route::get('admin/juegos', [\App\Http\Controllers\AdminController::class, 'games
 ->name('admin.games')
 ->middleware('auth')
 ;
+
+//JUEGOS
+Route::get('juegos/{id}', [\App\Http\Controllers\GamesController::class, 'view'])
+->name('games.view')
+->whereNumber('id')
+;
+
+Route::get('juegos', [\App\Http\Controllers\GamesController::class, 'index'])
+    ->name('games.index')
+    ;

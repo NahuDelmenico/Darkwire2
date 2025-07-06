@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('games', function (Blueprint $table) {
-            $table->id('game_id');
-            $table->String('name');
-            $table->String('description');
-            $table->double('price');
-            $table->date('release_at');
-            $table->timestamps();
+        Schema::table('games', function (Blueprint $table) {
+            $table->unsignedTinyInteger('category_fk');
+            $table->foreign('category_fk')->references('category_id')->on('categories');
         });
     }
 
@@ -26,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('games');
+        Schema::table('games', function (Blueprint $table) {
+            $table->dropColumn('category_fk');
+        });
     }
 };
