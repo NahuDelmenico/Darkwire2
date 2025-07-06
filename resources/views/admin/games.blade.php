@@ -36,13 +36,11 @@
                         <p class="text-muted mb-0">Administra el catálogo de juegos del sistema</p>
                     </div>
                     <div class="d-flex align-items-center gap-3">
-                        <div class="text-center">
-                            <div class="badge bg-info fs-6">{{ $games->count() }}</div>
-                            <small class="text-muted d-block">Total</small>
-                        </div>
-                        <div class="text-center">
-                            <div class="badge bg-success fs-6">${{ $games->sum('price') }}</div>
-                            <small class="text-muted d-block">Valor Total</small>
+                        
+                        <div class="text-center d-flex">
+                            
+                        <div class="badge border border-info text-muted  fs-5"> Total de Juegos: {{ $games->count() }}</div>
+                            
                         </div>
                         <a class="btn btn-primary" href="{{route('games.create')}}">
                             <i class="fas fa-plus me-2"></i>Agregar nuevo juego
@@ -152,20 +150,20 @@
                                         <td>
                                             <small>{{ $game->release_at }}</small>
                                             <br>
-                                            <small class="text-muted">{{ $game->release_at }}</small>
+                                            
                                         </td>
                                         <td>
                                             <small>{{ $game->created_at }}</small>
                                             <br>
-                                            <small class="text-muted">{{ $game->created_at }}</small>
+                                            
                                         </td>
                                         <td class="text-center">
                                             <div class="btn-group" role="group">
-                                                <a href="{{route('games.view', ['id' => $game->game_id])}}" class="btn btn-sm btn-outline-info" title="Detalle">Ver detalles</a>
+                                                <a href="{{route('games.view', ['id' => $game->game_id])}}" class="btn btn-sm btn-outline-primary" title="Detalle">Ver detalles</a>
 
-                                                <a href="{{route('games.edit', ['id' => $game->game_id])}}" class="btn btn-sm btn-outline-warning" title="Editar">Editar</a>
+                                                <a href="{{route('games.edit', ['id' => $game->game_id])}}" class="btn btn-sm btn-outline-secondary" title="Editar">Editar</a>
 
-                                                <a href="#" class="btn btn-sm btn-outline-success" title="Subir portada">Subir portada</a>
+                                                
 
                                                 <a href="{{route('games.delete', ['id' => $game->game_id])}}" class="btn btn-sm btn-outline-danger" title="Eliminar">Eliminar</a>
                                             </div>

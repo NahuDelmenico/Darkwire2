@@ -42,76 +42,28 @@
     <h1 class="my-5 d-flex justify-content-center">Catálogo de Juegos</h1>
 
     <section class="container">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+        
+        @foreach($games as $game)
             <div class="col">
-                <div class="card h-100 shadow-sm">
+                <div class="card h-100 shadow-lg  mb-5 bg-body-tertiary rounded ">
                     <img src="https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg" class="card-img-top game-img" alt="Red Dead Redemption 2">
                     <div class="card-body">
-                        <h5 class="card-title">Red Dead Redemption 2</h5>
-                        <p class="card-text">Explora el Lejano Oeste en este aclamado juego de mundo abierto de Rockstar Games.</p>
-                        <a href="#" class="btn btn-warning w-100">Comprar</a>
+                        <h5 class="card-title">{{$game->name}}</h5>
+                        <p class="card-text">{{$game->description}}</p>
+
+                        @if($game->price == 0)
+                            <p class="card-text">Gratis</p>
+                        @else
+                            <p class="card-text">${{ number_format($game->price, 2, ',', '.') }}</p>
+                        @endif
+
+                        <a href="{{ route('games.view',[ 'id' => $game->game_id]) }}" class="btn btn-warning w-100 d-flex justify-contect-end">Obtener</a>
                     </div>
                 </div>
             </div>
-
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg" class="card-img-top game-img" alt="CS:GO">
-                    <div class="card-body">
-                        <h5 class="card-title">Counter Strike: Global Offensive</h5>
-                        <p class="card-text">Clásico FPS multijugador competitivo entre terroristas y antiterroristas.</p>
-                        <a href="#" class="btn btn-warning w-100">Comprar</a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <img src="https://cdn.akamai.steamstatic.com/steam/apps/1551360/header.jpg" class="card-img-top game-img" alt="Forza Horizon 5">
-                    <div class="card-body">
-                        <h5 class="card-title">Forza Horizon 5</h5>
-                        <p class="card-text">Carreras en mundo abierto en los paisajes vibrantes de México.</p>
-                        <a href="#" class="btn btn-warning w-100">Comprar</a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <img src="https://cdn.akamai.steamstatic.com/steam/apps/1259420/header.jpg" class="card-img-top game-img" alt="Days Gone">
-                    <div class="card-body">
-                        <h5 class="card-title">Days Gone</h5>
-                        <p class="card-text">Sobrevive en un mundo postapocalíptico lleno de zombies.</p>
-                        <a href="#" class="btn btn-warning w-100">Comprar</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <img src="https://cdn.akamai.steamstatic.com/steam/apps/239140/header.jpg" class="card-img-top game-img" alt="Dying Light">
-                    <div class="card-body">
-                        <h5 class="card-title">Dying Light</h5>
-                        <p class="card-text">Acción y parkour en un mundo infestado por zombis.</p>
-                        <a href="#" class="btn btn-warning w-100">Comprar</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <img src="https://imgs.search.brave.com/7wqIhnyaQyDlALEcvMEAXAulC36gBTvIRgbcT4uony8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EUm1aRGcx/TkdRdFpHVTVOUzAw/TnpWa0xUaGhaREl0/TURKa01qUXdaR1E1/TURnNVhrRXlYa0Zx/Y0djQC5qcGc" class="card-img-top game-img" alt="Alan Wake 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Alan Wake 2</h5>
-                        <p class="card-text">Terror psicológico y narrativa profunda en esta esperada secuela.</p>
-                        <a href="#" class="btn btn-warning w-100">Comprar</a>
-                    </div>
-                </div>
-            </div>
-
+        @endforeach
+          
 
         </div>
     </div>
