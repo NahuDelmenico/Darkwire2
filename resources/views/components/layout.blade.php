@@ -39,6 +39,9 @@
                 <ul class="navbar-nav ms-auto">
                     @auth
                     <li class="nav-item">
+                        <a route="announcements.index" class="btn btn-warning">Administrar</a>
+                    </li>
+                    <li class="nav-item">
                         <form action="{{ route('auth.logout') }}" method="POST">
                         @csrf
                         <button type="submit" class="nav-link btn btn-link">
