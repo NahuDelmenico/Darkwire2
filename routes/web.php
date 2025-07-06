@@ -85,13 +85,3 @@ Route::get('admin/juegos', [\App\Http\Controllers\AdminController::class, 'games
 ->name('admin.games')
 ->middleware('auth')
 ;
-
-//JUEGOS
-Route::get('juegos/{id}', [\App\Http\Controllers\GamesController::class, 'view'])
-->name('games.view')
-->whereNumber('id')
-;
-
-Route::get('juegos', [\App\Http\Controllers\GamesController::class, 'index'])
-    ->name('games.index')
-    ;
