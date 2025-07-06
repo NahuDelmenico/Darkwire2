@@ -161,76 +161,19 @@
                                         </td>
                                         <td class="text-center">
                                             <div class="btn-group" role="group">
-                                                <a href="#" class="btn btn-sm btn-outline-info" title="Ver detalles">
-                                                    <i class="fas fa-eye"></i>
-                                                </a>
-                                                <a href="#" class="btn btn-sm btn-outline-warning" title="Editar">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
-                                                <a href="#" class="btn btn-sm btn-outline-success" title="Subir portada">
-                                                    <i class="fas fa-image"></i>
-                                                </a>
-                                                <button class="btn btn-sm btn-outline-danger" title="Eliminar"
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
+                                                <a href="#" class="btn btn-sm btn-outline-info" title="Detalle">Ver detalles</a>
+
+                                                <a href="#" class="btn btn-sm btn-outline-warning" title="Editar">Editar</a>
+
+                                                <a href="#" class="btn btn-sm btn-outline-success" title="Subir portada">Subir portada</a>
+
+                                                <a href="#" class="btn btn-sm btn-outline-danger" title="Eliminar">Eliminar</a>
                                             </div>
                                         </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Acciones masivas -->
-                <div class="mt-4 p-3 bg-secondary rounded">
-                    <div class="row align-items-center">
-                        <div class="col-md-6">
-                            <h6 class="mb-0">Acciones masivas:</h6>
-                            <small class="text-muted">Selecciona juegos para aplicar acciones en lote</small>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="d-flex gap-2 justify-content-end">
-                                <a href="#" class="btn btn-sm btn-outline-info" title="Detalle">Ver detalles</a>
-                                <a href="#" class="btn btn-sm btn-outline-warning" title="Editar">Editar</a>
-                                <a href="#" class="btn btn-sm btn-outline-danger" title="Eliminar">Eliminar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Vista previa del juego seleccionado -->
-                <div class="mt-4">
-                    <div class="card bg-dark border-secondary">
-                        <div class="card-header bg-secondary d-flex justify-content-between align-items-center">
-                            <h6 class="mb-0">Vista Previa del Juego</h6>
-                            <button class="btn btn-sm btn-outline-light" onclick="togglePreview()">
-                                <i class="fas fa-eye" id="previewIcon"></i>
-                            </button>
-                        </div>
-                        <div class="card-body d-none" id="previewContent">
-                            <div class="row">
-                                <div class="col-md-3 text-center">
-                                    <div class="mb-3" style="width: 150px; height: 150px; margin: 0 auto;">
-                                        <img id="previewImage" src="" class="rounded" style="width: 100%; height: 100%; object-fit: cover;">
-                                    </div>
-                                </div>
-                                <div class="col-md-9">
-                                    <h4 id="previewTitle" class="text-primary">Selecciona un juego para ver la vista previa</h4>
-                                    <p id="previewDescription" class="text-light"></p>
-                                    <div class="row mt-3">
-                                        <div class="col-md-6">
-                                            <h5>Precio: <span class="badge bg-primary" id="previewPrice"></span></h5>
-                                            <p><strong>Fecha de lanzamiento:</strong> <span id="previewRelease"></span></p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p><strong>Agregado:</strong> <span id="previewCreated"></span></p>
-                                            <p><strong>Última actualización:</strong> <span id="previewUpdated"></span></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -275,84 +218,4 @@
 
         </div>
     </div>
-
-    <script>
-        function confirmDelete(gameId) {
-            if (confirm('¿Estás seguro de que quieres eliminar este juego?')) {
-                // Aquí iría la lógica para eliminar el juego
-                console.log('Eliminando juego:', gameId);
-            }
-        }
-        
-        // Búsqueda en tiempo real
-        document.getElementById('searchInput').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            const rows = document.querySelectorAll('tbody tr');
-            
-            rows.forEach(row => {
-                const text = row.textContent.toLowerCase();
-                row.style.display = text.includes(searchTerm) ? '' : 'none';
-            });
-        });
-        
-        // Vista previa
-        function togglePreview() {
-            const content = document.getElementById('previewContent');
-            const icon = document.getElementById('previewIcon');
-            
-            if (content.classList.contains('d-none')) {
-                content.classList.remove('d-none');
-                icon.classList.remove('fa-eye');
-                icon.classList.add('fa-eye-slash');
-            } else {
-                content.classList.add('d-none');
-                icon.classList.remove('fa-eye-slash');
-                icon.classList.add('fa-eye');
-            }
-        }
-        
-        // Función para mostrar vista previa al hacer clic en una fila
-        document.querySelectorAll('tbody tr').forEach(row => {
-            row.addEventListener('click', function(e) {
-                if (e.target.closest('.btn-group')) return; // No activar si se hace clic en botones
-                
-                const name = this.cells[1].querySelector('strong').textContent;
-                const description = this.cells[2].textContent.trim();
-                const price = this.cells[3].textContent.trim();
-                const releaseDate = this.cells[4].textContent.trim();
-                const createdDate = this.cells[5].textContent.trim();
-                const imageElement = this.cells[1].querySelector('img');
-                
-                document.getElementById('previewTitle').textContent = name;
-                document.getElementById('previewDescription').textContent = description;
-                document.getElementById('previewPrice').textContent = price;
-                document.getElementById('previewRelease').textContent = releaseDate;
-                document.getElementById('previewCreated').textContent = createdDate;
-                document.getElementById('previewUpdated').textContent = 'Hace 2 días'; // Ejemplo
-                
-                // Configurar imagen
-                const previewImage = document.getElementById('previewImage');
-                if (imageElement) {
-                    previewImage.src = imageElement.src;
-                    previewImage.alt = imageElement.alt;
-                } else {
-                    previewImage.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNTAiIGhlaWdodD0iMTUwIiBmaWxsPSIjNjY3ZWVhIi8+CjxwYXRoIGQ9Ik03NSA2MEM4My4yODQzIDYwIDkwIDY2LjcxNTcgOTAgNzVTODMuMjg0MyA5MCA3NSA5MFM2MCA4My4yODQzIDYwIDc1UzY2LjcxNTcgNjAgNzUgNjBaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K';
-                    previewImage.alt = 'Sin imagen';
-                }
-                
-                // Mostrar vista previa si está oculta
-                const content = document.getElementById('previewContent');
-                const icon = document.getElementById('previewIcon');
-                if (content.classList.contains('d-none')) {
-                    content.classList.remove('d-none');
-                    icon.classList.remove('fa-eye');
-                    icon.classList.add('fa-eye-slash');
-                }
-                
-                // Highlight de la fila seleccionada
-                document.querySelectorAll('tbody tr').forEach(r => r.classList.remove('table-active'));
-                this.classList.add('table-active');
-            });
-        });
-    </script>
 </x-layout>
