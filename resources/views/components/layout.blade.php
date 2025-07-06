@@ -39,7 +39,7 @@
                 <ul class="navbar-nav ms-auto">
                     @auth
                     <li class="nav-item">
-                        <a route="announcements.index" class="btn btn-warning">Administrar</a>
+                        <a href="{{ route('admin.users') }}" class="btn btn-warning">Administrar</a>
                     </li>
                     <li class="nav-item">
                         <form action="{{ route('auth.logout') }}" method="POST">
@@ -61,7 +61,6 @@
 
 
         <main class="p-4 " >
-
             {{ $slot}}
         </main>
         <footer class="footer text-bg-dark text-center border-top border-dark-subtle border-4 pt-5">

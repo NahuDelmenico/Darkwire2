@@ -4,12 +4,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
+// HOME
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'home'])
     ->name('home')
     ;
 Route::get('catalogo', [\App\Http\Controllers\HomeController::class, 'catalogo'])
     ->name('catalogo')
     ;
+
+// LOGIN
 Route::get('iniciar-sesion', [\App\Http\Controllers\AuthController::class, 'login'])
     ->name('auth.login');
 
@@ -21,6 +24,7 @@ Route::post('cerrar-sesion', [\App\Http\Controllers\AuthController::class, 'logo
     ->name('auth.logout')
     ;
 
+// NOVEDADES
 Route::get('novedades', [\App\Http\Controllers\AnnouncementsController::class, 'index'])
 ->name('announcements.index');
 
@@ -68,4 +72,18 @@ Route::put('novedades/editar/{id}', [\App\Http\Controllers\AnnouncementsControll
 
 ;
 
+// ADMIN
+Route::get('admin/usuarios', [\App\Http\Controllers\AdminController::class, 'users'])
+->name('admin.users')
+->middleware('auth')
+;
 
+Route::get('admin/anuncios', [\App\Http\Controllers\AdminController::class, 'announcements'])
+->name('admin.announcements')
+->middleware('auth')
+;
+
+Route::get('admin/juegos', [\App\Http\Controllers\AdminController::class, 'games'])
+->name('admin.games')
+->middleware('auth')
+;

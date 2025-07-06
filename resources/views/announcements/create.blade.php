@@ -38,7 +38,7 @@
                 <div class=" mb-3">
                     <label for="description" class="form-label">Descripcion</label>
                     <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" style="height: 300px"
-                     @error('description') arial-invalid="true" arial-errornessage="error-description" @enderror >{{old('description')}} </textarea>
+                    @error('description') arial-invalid="true" arial-errornessage="error-description" @enderror >{{old('description')}} </textarea>
                     @error('description')
                         <div id="error-description" class="text-danger">{{$message}}</div>
                     @enderror
