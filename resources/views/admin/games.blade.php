@@ -112,7 +112,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- @foreach($games as $index => $game) -->
+                                    @foreach($games as $index => $game)
                                     <tr>
                                         <td class="ps-4">{{ $index + 1 }}</td>
                                         <td>
@@ -170,8 +170,7 @@
                                                 <a href="#" class="btn btn-sm btn-outline-success" title="Subir portada">
                                                     <i class="fas fa-image"></i>
                                                 </a>
-                                                <button class="btn btn-sm btn-outline-danger" title="Eliminar" 
-                                                        onclick="confirmDelete({{ $game->game_id }})">
+                                                <button class="btn btn-sm btn-outline-danger" title="Eliminar"
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </div>
@@ -184,18 +183,6 @@
                     </div>
                 </div>
 
-                <!-- Paginación -->
-                <div class="d-flex justify-content-between align-items-center mt-4">
-                    <div>
-                        <small class="text-muted">
-                            Mostrando {{ $games->firstItem() }} - {{ $games->lastItem() }} de {{ $games->total() }} resultados
-                        </small>
-                    </div>
-                    <div>
-                        {{ $games->links() }}
-                    </div>
-                </div>
-
                 <!-- Acciones masivas -->
                 <div class="mt-4 p-3 bg-secondary rounded">
                     <div class="row align-items-center">
@@ -205,18 +192,9 @@
                         </div>
                         <div class="col-md-6">
                             <div class="d-flex gap-2 justify-content-end">
-                                <button class="btn btn-sm btn-outline-success" disabled>
-                                    <i class="fas fa-tag me-1"></i>Aplicar descuento
-                                </button>
-                                <button class="btn btn-sm btn-outline-info" disabled>
-                                    <i class="fas fa-star me-1"></i>Destacar
-                                </button>
-                                <button class="btn btn-sm btn-outline-warning" disabled>
-                                    <i class="fas fa-archive me-1"></i>Archivar
-                                </button>
-                                <button class="btn btn-sm btn-outline-danger" disabled>
-                                    <i class="fas fa-trash me-1"></i>Eliminar
-                                </button>
+                                <a href="#" class="btn btn-sm btn-outline-info" title="Detalle">Ver detalles</a>
+                                <a href="#" class="btn btn-sm btn-outline-warning" title="Editar">Editar</a>
+                                <a href="#" class="btn btn-sm btn-outline-danger" title="Eliminar">Eliminar</a>
                             </div>
                         </div>
                     </div>
