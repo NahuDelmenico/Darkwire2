@@ -9,5 +9,5 @@ class Announcement extends Model
    protected $table = 'announcements';
 
    protected $primaryKey = 'announcement_id';
-   protected $fillable = ['title','subtitle','description','author'];
+   protected $fillable = ['title','subtitle','description','author', 'cover', 'cover description'];
 }

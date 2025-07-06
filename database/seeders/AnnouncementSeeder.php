@@ -15,7 +15,6 @@ class AnnouncementSeeder extends Seeder
     {
        DB::table('announcements')->insert([
             [
-                'announcement_id' => 1,
                 'title' => 'Lanzamiento GTA VI',
                 'subtitle' => 'Novedades sobre el lanzamiento del juego¿Que nos espera?', 
                 'description' => 
@@ -41,7 +40,7 @@ GTA 6 no solo busca superar a sus predecesores, sino redefinir el estándar de l
             ]
             ,
             [
-                'announcement_id' => 2,
+                
                 'title' => 'Nuevo mapa en CSGO',
                 'subtitle' => 'Comno es y que se espera del nuevo mapa de CSGO', 
                 'description' => 

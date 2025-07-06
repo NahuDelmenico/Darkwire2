@@ -14,7 +14,7 @@
         @endif
 
         <div class="d-flex justify-content-center">
-            <form action="{{route('announcements.store')}}" class="w-75" method="post">
+            <form action="{{route('announcements.store')}}" class="w-75" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <div class="mb-3">

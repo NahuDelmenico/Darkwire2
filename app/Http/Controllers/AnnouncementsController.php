@@ -57,9 +57,13 @@ class AnnouncementsController extends Controller
                 'author.min'=>'El autor debe tener al menos :min caracteres',
 
             ]);
-
+            $input = $request->all();
+            if ($request->hasFile('cover')) {
+                $input['file'] = $request->file('cover')->store('covers', 'public');
+            }
 
             Announcement::create($request->all());
+
             
             return redirect()
             ->route('announcements.index')
