@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Game;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class GamesController extends Controller
@@ -28,7 +29,113 @@ class GamesController extends Controller
         ]);     
     }
 
+    public function create()
+    {
+
+        return view('games.create');
+    }
+
+    public function store(Request $request)
+        {
+            
+            $request->validate([
+                'name'         =>'required|min:2',
+                'description'      =>'required|min:2',
+                'price'   =>'required|max:3000',
+                'release_at' => 'required',
+                'category_fk'        =>'required',
+            ],[
+                'name.required'=>'El nombre debe tener un valor',
+                'name.min'=>'El nombre debe tener al menos :min caracteres',
+                
+                'description.required'=>'La descripcion debe tener un valor',
+                'title.max'=>'La descripcion debe tener :max caracteres como mucho',
+
+                'price.required'=>'Debe ingresar el precio',
+
+                'category_fk.required'=>'Debe ingresar la categoria',
+
+                'release_at.required'=>'Debe ingresar la fecha'
+                
+
+            ]);
+            
+            //$input = $request->all();
+            //if ($request->hasFile('cover')) {
+            //    $input['file'] = $request->file('cover')->store('covers', 'public');
+            //}
+
+            Game::create($request->all());
+
+            
+            return redirect()
+            ->route('admin.games')
+            ->with('feedback.message' , 'La noticia <b>'. e($request->name).'</b> fue <b>publicada</b> exitosamente');
+        }
+
+        public function destroy(int $id){
+            
+            $game = Game::findOrFail($id);
+            
+            $game->delete($id);
 
 
- 
+            return redirect()
+            ->route('admin.game')
+            ->with('feedback.message' , 'La noticia <b>'. e($game->name) .'</b> fue <b>eliminada</b> exitosamente');
+
+        }
+
+        public function delete(int $id)
+        {
+            
+            return view('games.delete', [
+
+                'game' => Game::findOrFail($id)
+            ]);
+        }
+
+        public function edit(int $id)
+        {
+            
+            return view('games.edit', [
+
+                'game' => Game::findOrFail($id)
+            ]);
+        }
+
+        public function update(Request $request, int $id)
+        {
+            $game = Game::findOrFail($id);
+
+            $request->validate([
+                'name'         =>'required|min:2',
+                'description'      =>'required|min:2',
+                'price'   =>'required|max:3000',
+                'release_at' => 'required',
+                'category_fk'        =>'required',
+            ],[
+                'name.required'=>'El nombre debe tener un valor',
+                'name.min'=>'El nombre debe tener al menos :min caracteres',
+                
+                'description.required'=>'La descripcion debe tener un valor',
+                'title.max'=>'La descripcion debe tener :max caracteres como mucho',
+
+                'price.required'=>'Debe ingresar el precio',
+
+                'category_fk.required'=>'Debe ingresar la categoria',
+
+                'release_at.required'=>'Debe ingresar la fecha'
+                
+
+            ]);
+
+            $game->update($request->all());
+
+            
+            
+            return redirect()
+            ->route('admin.games')
+            ->with('feedback.message' , 'La noticia <b>'. e($request->name).'</b> fue <b>actualizo</b> exitosamente');
+        }
 }

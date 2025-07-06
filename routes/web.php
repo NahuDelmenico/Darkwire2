@@ -95,6 +95,38 @@ Route::get('juegos/{id}', [\App\Http\Controllers\GamesController::class, 'view']
 ->name('games.view')
 ;
 
+Route::get('juegos/{id}', [\App\Http\Controllers\GamesController::class, 'create'])
+->name('games.create')
+;
+
+Route::post('juegos/{id}', [\App\Http\Controllers\GamesController::class, 'store'])
+->name('games.store')
+;
+
+Route::delete('juegos/{id}/eliminar', [\App\Http\Controllers\GamesController::class, 'destroy'])
+->name('games.destroy')
+->middleware('auth')
+->whereNumber('id')
+;
+
+Route::get('juegos/{id}/eliminar', [\App\Http\Controllers\GamesController::class, 'delete'])
+->name('games.delete')
+->middleware('auth')
+->whereNumber('id')
+;
+
+Route::get('juegos/editar/{id}', [\App\Http\Controllers\GamesController::class, 'edit'])
+->name('games.edit')
+->middleware('auth')
+->whereNumber('id')
+;
+
+Route::get('juegos/editar/{id}', [\App\Http\Controllers\GamesController::class, 'update'])
+->name('games.update')
+->middleware('auth')
+->whereNumber('id')
+;
+
 // USUARIOS
 
 Route::get('usuarios/{id}', [\App\Http\Controllers\UserController::class, 'view'])
