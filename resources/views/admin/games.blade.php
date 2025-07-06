@@ -150,18 +150,18 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <small>{{ $game->release_at->format('d/m/Y') }}</small>
+                                            <small>{{ $game->release_at }}</small>
                                             <br>
-                                            <small class="text-muted">{{ $game->release_at->diffForHumans() }}</small>
+                                            <small class="text-muted">{{ $game->release_at }}</small>
                                         </td>
                                         <td>
-                                            <small>{{ $game->created_at->format('d/m/Y') }}</small>
+                                            <small>{{ $game->created_at }}</small>
                                             <br>
-                                            <small class="text-muted">{{ $game->created_at->format('H:i') }}</small>
+                                            <small class="text-muted">{{ $game->created_at }}</small>
                                         </td>
                                         <td class="text-center">
                                             <div class="btn-group" role="group">
-                                                <a href="#" class="btn btn-sm btn-outline-info" title="Detalle">Ver detalles</a>
+                                                <a href="{{route('games.view', ['id' => $game->game_id])}}" class="btn btn-sm btn-outline-info" title="Detalle">Ver detalles</a>
 
                                                 <a href="#" class="btn btn-sm btn-outline-warning" title="Editar">Editar</a>
 

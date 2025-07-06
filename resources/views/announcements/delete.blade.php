@@ -5,12 +5,10 @@
         Eliminar Novedad :: {{ $announcement->title}}
     </x-slot:title>
 
-     
-
     <div class="d-flex justify-content-center w-100">
         <div class="w-75">
             <div class="alert alert-danger">
-                <p>Estasa a putno de elimiar la novedad <b>"{{ $announcement->title}}"</b></p>
+                <p>Estas a putno de eliminar la novedad <b>"{{ $announcement->title}}"</b></p>
                 <p>¿Quieres eliminar la novedad?</p>
 
                 <form action="{{route('announcements.destroy',['id'=>$announcement->announcement_id])}}"
@@ -28,7 +26,7 @@
 
                 <p>{{ $announcement->subtitle}}</p>
 
-               <span class="fst-italic text-body-secondary mt-auto">
+            <span class="fst-italic text-body-secondary mt-auto">
                     {{ $announcement->created_at }} - {{ $announcement->author }}
                 </span>
             </div>

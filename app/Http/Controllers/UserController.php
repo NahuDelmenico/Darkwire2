@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
 
+    public function view(int $id)
+        {
+            
+            return view('user.view', [
+
+                'user' => User::findOrFail($id)
+            ]);
+        }
+
     public function create()
         {
             
@@ -51,23 +60,23 @@ class UserController extends Controller
 
         public function destroy(int $id){
             
-            $announcement = User::findOrFail($id);
+            $user = User::findOrFail($id);
             
-            $announcement->delete($id);
+            $user->delete($id);
 
 
             return redirect()
-            ->route('announcements.index')
-            ->with('feedback.message' , 'La noticia <b>'. e($announcement->title) .'</b> fue <b>eliminada</b> exitosamente');
+            ->route('admin.users')
+            ->with('feedback.message' , 'El usuario <b>'. e($user->name) .'</b> fue <b>eliminado</b> exitosamente');
 
         }
         
         public function delete(int $id)
         {
             
-            return view('announcements.delete', [
+            return view('user.delete', [
 
-                'announcement' => User::findOrFail($id)
+                'user' => User::findOrFail($id)
             ]);
         }
 
@@ -82,7 +91,7 @@ class UserController extends Controller
 
         public function update(Request $request, int $id)
         {
-            $announcement = Announcement::findOrFail($id);
+            $announcement = User::findOrFail($id);
 
             $request->validate([
                 'title'         =>'required|min:2',

@@ -11,7 +11,7 @@ class GamesController extends Controller
 
          return view('games.view', [
 
-                'games' => Game::findOrFail($id)
+                'game' => Game::findOrFail($id)
             ]);
 
     }

@@ -122,9 +122,9 @@
                                         </td>
                                         <td class="text-center">
                                             <div class="btn-group" role="group">
-                                                <a href="#" class="btn btn-sm btn-outline-info" title="Detalle">Ver detalles</a>
-                                                <a href="#" class="btn btn-sm btn-outline-warning" title="Editar">Editar</a>
-                                                <a href="#" class="btn btn-sm btn-outline-danger" title="Eliminar">Eliminar</a>
+                                                <a href="{{route('user.view', ['id' => $user->id])}}" class="btn btn-sm btn-outline-info" title="Detalle">Ver detalles</a>
+                                                <a href="{{route('user.edit', ['id' => $user->id])}}" class="btn btn-sm btn-outline-warning" title="Editar">Editar</a>
+                                                <a href="{{route('user.delete', ['id' => $user->id])}}" class="btn btn-sm btn-outline-danger" title="Eliminar">Eliminar</a>
                                             </div>
                                         </td>
                                     </tr>

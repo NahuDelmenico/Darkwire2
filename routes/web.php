@@ -96,3 +96,27 @@ Route::get('juegos/{id}', [\App\Http\Controllers\GamesController::class, 'view']
 ;
 
 // USUARIOS
+
+Route::get('usuarios/{id}', [\App\Http\Controllers\UserController::class, 'view'])
+->name('user.view')
+->middleware('auth')
+;
+
+Route::get('usuarios/{id}/editar', [\App\Http\Controllers\UserController::class, 'edit'])
+->name('user.edit')
+->middleware('auth')
+;
+
+Route::delete('usuarios/{id}/eliminar', [\App\Http\Controllers\UserController::class, 'destroy'])
+->name('user.destroy')
+->middleware('auth')
+->whereNumber('id')
+
+;
+
+Route::get('usuarios/{id}/eliminar', [\App\Http\Controllers\UserController::class, 'delete'])
+->name('user.delete')
+->whereNumber('id')
+->middleware('auth')
+
+;

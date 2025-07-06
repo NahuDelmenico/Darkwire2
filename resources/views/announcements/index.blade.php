@@ -12,7 +12,6 @@
         <p class="w-100 fs-4 font-monospace text-center">
             Desde las últimas actualizaciones hasta los grandes anuncios que marcan el futuro del gaming, te traemos la información más fresca y confiable para que no te pierdas ni un solo detalle de la comunidad gamer.
         </p>
-       
     </div>
 
     <div class="d-flex justify-content-center">
