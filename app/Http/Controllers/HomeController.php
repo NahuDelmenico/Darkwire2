@@ -10,9 +10,4 @@ class HomeController extends Controller
     {
         return view('welcome') ;     
     }
-
-    public function catalogo()
-    {
-        return view('catalogo') ;     
-    }
 }

@@ -22,7 +22,7 @@ class AuthController extends Controller
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
             return redirect()
-            ->intended(route('welcome'))
+            ->intended(route('home'))
             ->with(['feedback.message' => 'Sesion Iniciada con exito',
                     'feedback.type' => 'success'
             ]);

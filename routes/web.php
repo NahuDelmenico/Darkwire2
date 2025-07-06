@@ -9,7 +9,6 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'home'])
     ->name('home')
     ;
 
-
 // LOGIN
 Route::get('iniciar-sesion', [\App\Http\Controllers\AuthController::class, 'login'])
     ->name('auth.login');
@@ -85,3 +84,15 @@ Route::get('admin/juegos', [\App\Http\Controllers\AdminController::class, 'games
 ->name('admin.games')
 ->middleware('auth')
 ;
+
+// JUEGOS
+
+Route::get('juegos', [\App\Http\Controllers\GamesController::class, 'index'])
+->name('games.index')
+;
+
+Route::get('juegos/{id}', [\App\Http\Controllers\GamesController::class, 'view'])
+->name('games.view')
+;
+
+// USUARIOS
