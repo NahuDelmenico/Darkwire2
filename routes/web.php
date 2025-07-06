@@ -143,8 +143,14 @@ Route::post('usuarios/crear', [\App\Http\Controllers\UserController::class, 'sto
 ->middleware('auth')
 ;
 
-Route::get('usuarios/{id}/editar', [\App\Http\Controllers\UserController::class, 'edit'])
+Route::get('usuarios/editar/{id}', [\App\Http\Controllers\UserController::class, 'edit'])
 ->name('user.edit')
+->middleware('auth')
+;
+
+Route::put('usuarios/editar/{id}', [\App\Http\Controllers\UserController::class, 'update'])
+->name('user.update')
+->whereNumber('id')
 ->middleware('auth')
 ;
 

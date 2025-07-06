@@ -14,25 +14,25 @@
         @endif
 
         <div class="d-flex justify-content-center">
-            <form action="#" class="w-75" method="POST">
+            <form action="{{route('user.update',['id'=> $user -> id])}}" class="w-75" method="POST">
                 @csrf
                 @method('PUT')
 
                 <div class="mb-3">
-                    <label class="form-label" for="title">Nombre</label>
-                    <input type="text" id="title" name="title" class="form-control @error('title') is-invalid @enderror" 
-                    @error('title') arial-invalid="true" arial-errornessage="error-title" @enderror value="{{old('title',$user->name)}}">
-                    @error('title')
-                        <div id="error-title" class="text-danger">{{$message}}</div>
+                    <label class="form-label" for="name">Nombre</label>
+                    <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" 
+                    @error('name') arial-invalid="true" arial-errornessage="error-name" @enderror value="{{old('name',$user->name)}}">
+                    @error('name')
+                        <div id="error-name" class="text-danger">{{$message}}</div>
                     @enderror
                 </div>
                 
                 <div class="mb-3">
-                    <label class="form-label" for="subtitle">Email</label>
-                    <input type="text" id="subtitle" name="subtitle" class="form-control @error('subtitle') is-invalid @enderror"
-                    @error('subtitle') arial-invalid="true" arial-errornessage="error-subtitle" @enderror value="{{old('subtitle',$user->email)}}">
-                    @error('subtitle')
-                        <div id="error-subtitle" class="text-danger">{{$message}}</div>
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror"
+                    @error('email') arial-invalid="true" arial-errornessage="error-email" @enderror value="{{old('email',$user->email)}}">
+                    @error('email')
+                        <div id="error-email" class="text-danger">{{$message}}</div>
                     @enderror
                 </div>
 

@@ -1,6 +1,6 @@
 <x-layout>
 
-    <x-slot:title> Editar Notica {{$announcement->title}} </x-slot:title>
+    <x-slot:title> Editar Noticia {{$announcement->title}} </x-slot:title>
 
         <h1 class="mb-3 d-flex justify-content-center">Editar {{$announcement->title}}</h1>
 

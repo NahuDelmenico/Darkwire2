@@ -19,8 +19,8 @@
 
                 <div class="mb-3">
                     <label class="form-label" for="name">Nombre</label>
-                    <input type="text" id="name" name="name" class="form-control @error('title') is-invalid @enderror" 
-                    @error('name') arial-invalid="true" arial-errornessage="error-title" @enderror value="{{old('title')}}">
+                    <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" 
+                    @error('name') arial-invalid="true" arial-errornessage="error-name" @enderror value="{{old('name')}}">
                     @error('name')
                         <div id="error-name" class="text-danger">{{$message}}</div>
                     @enderror
