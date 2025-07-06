@@ -54,6 +54,32 @@
                     @enderror
                 </div>
 
+              <div class="mb-3">
+                <label class="form-label" for="category_fk">Categoría</label>
+                <select 
+                    id="category_fk" 
+                    name="category_fk" 
+                    class="form-select @error('category_fk') is-invalid @enderror" 
+                    aria-label="Seleccionar categoría"
+                    @error('category_fk') 
+                        aria-invalid="true" 
+                        aria-describedby="error-category_fk" 
+                    @enderror
+                >
+                    <option value="" disabled {{ old('category_fk') ? '' : 'selected' }}>Seleccione una categoría</option>
+                    @foreach($categories as $c)
+                        <option value="{{ $c->category_id }}" {{ old('category_fk') == $c->category_id ? 'selected' : '' }}>
+                            {{ $c->name }}
+                        </option>
+                    @endforeach
+                </select>
+
+                @error('category_fk')
+                    <div id="error-category_fk" class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+
                 <div class="mb-3">
                     <label for="cover" class="form-label">Portada</label>
                     <input class="form-control form-control-lg" id="cover" name="cover" type="file">

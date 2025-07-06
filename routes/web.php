@@ -87,47 +87,44 @@ Route::get('admin/juegos', [\App\Http\Controllers\AdminController::class, 'games
 
 // JUEGOS
 
-Route::get('juegos', [\App\Http\Controllers\GamesController::class, 'index'])
-->name('games.index')
-;
+Route::get('juegos', [\App\Http\Controllers\GamesController::class, 'index'])->name('games.index');
 
 Route::get('juegos/{id}', [\App\Http\Controllers\GamesController::class, 'view'])
 ->name('games.view')
-;
+->whereNumber('id'); 
+
 
 Route::get('juegos/crear', [\App\Http\Controllers\GamesController::class, 'create'])
 ->name('games.create')
-->middleware('auth')
-;
+->middleware('auth');
 
 Route::post('juegos/crear', [\App\Http\Controllers\GamesController::class, 'store'])
 ->name('games.store')
-->middleware('auth')
-;
+->middleware('auth');
 
-Route::delete('juegos/{id}/eliminar', [\App\Http\Controllers\GamesController::class, 'destroy'])
-->name('games.destroy')
-->middleware('auth')
-->whereNumber('id')
-;
 
 Route::get('juegos/{id}/eliminar', [\App\Http\Controllers\GamesController::class, 'delete'])
 ->name('games.delete')
 ->middleware('auth')
-->whereNumber('id')
-;
+->whereNumber('id');
+
+Route::delete('juegos/{id}/eliminar', [\App\Http\Controllers\GamesController::class, 'destroy'])
+->name('games.destroy')
+->middleware('auth')
+->whereNumber('id');
+
+
 
 Route::get('juegos/editar/{id}', [\App\Http\Controllers\GamesController::class, 'edit'])
 ->name('games.edit')
-->whereNumber('id')
 ->middleware('auth')
-;
+->whereNumber('id');
 
 Route::put('juegos/editar/{id}', [\App\Http\Controllers\GamesController::class, 'update'])
 ->name('games.update')
-->whereNumber('id')
 ->middleware('auth')
-;
+->whereNumber('id');
+
 
 // USUARIOS
 

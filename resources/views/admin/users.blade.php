@@ -6,7 +6,7 @@
 
             <!-- Sidebar izquierdo -->
             <aside class="col-12 col-md-3 col-lg-2 bg-body-tertiary text-white py-4">
-                <h4 class="px-3 mb-4">Opciones:</h4>
+                <h4 class="px-3 mb-4">Menú Administrador</h4>
                 <ul class="nav flex-column px-3">
                     <li class="nav-item mb-2">
                         <a href="{{ route('admin.users') }}" class="nav-link text-light active bg-primary rounded">

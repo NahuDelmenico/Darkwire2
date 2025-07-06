@@ -2,37 +2,47 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Game;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class GamesController extends Controller
 {
-    public function view(int $id){
-
-         return view('games.view', [
-
-                'game' => Game::findOrFail($id)
-            ]);
-
-    }
-
      public function index()
-    {
-        $games = Game::all();
+        {
+            $games = Game::all();
 
-       
+        
 
-        return view('games.index',[
+            return view('games.index',[
 
-                'games' => $games
-        ]);     
-    }
+                    'games' => $games
+            ]);     
+        }
+    
+    public function view(int $id)
+        {
+
+            return view('games.view', [
+
+                    'game' => Game::findOrFail($id)
+                ]);
+
+        }
+
+
 
     public function create()
     {
 
-        return view('games.create');
+        $categories = Category::all();
+
+        return view('games.create',[
+
+            'categories' => $categories
+
+        ]);
     }
 
     public function store(Request $request)
@@ -81,7 +91,7 @@ class GamesController extends Controller
 
 
             return redirect()
-            ->route('admin.game')
+            ->route('admin.games')
             ->with('feedback.message' , 'La noticia <b>'. e($game->name) .'</b> fue <b>eliminada</b> exitosamente');
 
         }
@@ -97,9 +107,10 @@ class GamesController extends Controller
 
         public function edit(int $id)
         {
-            
-            return view('games.edit', [
+             $categories = Category::all();
 
+            return view('games.edit', [
+                'categories' => $categories,
                 'game' => Game::findOrFail($id)
             ]);
         }
