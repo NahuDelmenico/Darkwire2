@@ -67,8 +67,11 @@ class AnnouncementsController extends Controller
 
             
             return redirect()
-            ->route('announcements.index')
-            ->with('feedback.message' , 'La noticia <b>'. e($request->title).'</b> fue <b>publicada</b> exitosamente');
+            ->route('admin.announcements')
+            ->with([
+                'feedback.message' => 'La noticia <b>' . e($request->title) . '</b> fue <b>publicada</b> exitosamente',
+                'feedback.type' => 'success' // success, error, warning, info
+            ]);
         }
 
         public function destroy(int $id){
@@ -79,8 +82,11 @@ class AnnouncementsController extends Controller
 
 
             return redirect()
-            ->route('announcements.index')
-            ->with('feedback.message' , 'La noticia <b>'. e($announcement->title) .'</b> fue <b>eliminada</b> exitosamente');
+            ->route('admin.announcements')
+            ->with([
+                'feedback.message' => 'La noticia <b>' . e($announcement->title) . '</b> fue <b>eliminada</b> exitosamente',
+                'feedback.type' => 'danger' // success, error, warning, info
+            ]);
 
         }
         
@@ -138,7 +144,10 @@ class AnnouncementsController extends Controller
             
             
             return redirect()
-            ->route('announcements.index')
-            ->with('feedback.message' , 'La noticia <b>'. e($request->title).'</b> fue <b>actualizo</b> exitosamente');
+            ->route('admin.announcements')
+            ->with([
+                'feedback.message' => 'La noticia <b>' . e($announcement->title) . '</b> fue <b>actualizada</b> exitosamente',
+                'feedback.type' => 'info' // success, error, warning, info
+            ]);
         }
 }
