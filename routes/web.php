@@ -39,27 +39,16 @@ Route::get('novedades/{id}', [\App\Http\Controllers\AnnouncementsController::cla
 
 // ADMIN
 
-<<<<<<< Updated upstream
-
-=======
 Route::middleware(['auth', 'admin'])->group(function () {
     
     // VISTAS DE ADMIN
->>>>>>> Stashed changes
     Route::get('admin/usuarios', [\App\Http\Controllers\AdminController::class, 'users'])
-        ->name('admin.users')
-        ->middleware('auth');
+        ->name('admin.users');
     
     Route::get('admin/anuncios', [\App\Http\Controllers\AdminController::class, 'announcements'])
-        ->name('admin.announcements')
-        ->middleware('auth');
+        ->name('admin.announcements');
     
     Route::get('admin/juegos', [\App\Http\Controllers\AdminController::class, 'games'])
-<<<<<<< Updated upstream
-        ->name('admin.games')
-        ->middleware('auth');
-
-=======
         ->name('admin.games');
 
     // JUEGOS
@@ -175,7 +164,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     ;
 });
->>>>>>> Stashed changes
 
 // JUEGOS
 
