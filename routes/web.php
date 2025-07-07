@@ -87,17 +87,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
     ->middleware('auth')
     ;
 
-    Route::post('usuarios/crear', [\App\Http\Controllers\UserController::class, 'store'])
-    ->name('user.store')
-    ->middleware('auth')
-    ;
-
-    Route::get('usuarios/editar/{id}', [\App\Http\Controllers\UserController::class, 'edit'])
-    ->name('user.edit')
-    ->whereNumber('id')
-    ->middleware('auth')
-    ;
-
     Route::put('usuarios/editar/{id}', [\App\Http\Controllers\UserController::class, 'update'])
     ->name('user.update')
     ->whereNumber('id')
@@ -164,6 +153,17 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     ;
 });
+
+    Route::post('usuarios/crear', [\App\Http\Controllers\UserController::class, 'store'])
+    ->name('user.store')
+    ->middleware('auth')
+    ;
+
+    Route::get('usuarios/editar/{id}', [\App\Http\Controllers\UserController::class, 'edit'])
+    ->name('user.edit')
+    ->whereNumber('id')
+    ->middleware('auth')
+    ;
 
 // JUEGOS
 

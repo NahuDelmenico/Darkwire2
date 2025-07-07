@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -95,10 +96,17 @@ class UserController extends Controller
         public function edit(int $id)
         {
             
-            return view('user.edit', [
-
+            if (!Auth::check() || !Auth::user()->idCoincide()) {
+                return view('user.edit', [
                 'user' => User::findOrFail($id)
-            ]);
+                ]);
+            } else {
+                return redirect()
+                ->route('home');
+            }
+        }
+
+            
         }
 
         public function update(Request $request, int $id)

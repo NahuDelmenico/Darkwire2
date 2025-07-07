@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->rol === 'Administrador';
     }
+
+    public function idCoincide($id)
+    {
+        return $this->id === $id;
+    }
 }
