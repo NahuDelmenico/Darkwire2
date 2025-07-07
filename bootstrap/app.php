@@ -19,6 +19,11 @@ return Application::configure(basePath: dirname(__DIR__))
            session()->flash('feedback.type', 'danger');
             return route('auth.login'); 
         });
+        
+        // Agregar el middleware de admin
+        $middleware->alias([
+            'admin' => \App\Http\Middleware\AdminMiddleware::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
