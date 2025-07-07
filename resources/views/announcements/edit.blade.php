@@ -57,6 +57,9 @@
                 <div class="mb-3">
                     <label for="cover" class="form-label">Portada</label>
                     <input class="form-control form-control-lg" id="cover" name="cover" type="file">
+                    @error('cover')
+                        <p> {{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div>

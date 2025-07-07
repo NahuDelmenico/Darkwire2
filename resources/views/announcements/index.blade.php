@@ -21,7 +21,7 @@
             <div class="card d-flex flex-row mb-4 shadow-lg  mb-5 bg-body-tertiary rounded" style="width: 75%; height: 250px;">
                               
                 @if($announcement->cover)
-                <img    src="{{ \Illuminate\Support\Facades\Storage::url($announcement->cover) }}" 
+                <img    src="{{ \Illuminate\Support\Facades\Storage::url('covers/' . $announcement->cover) }}" 
                         class="img-fluid w-25 rounded-start" 
                         alt="{{ $announcement->cover_description }}">
                 @else
