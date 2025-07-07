@@ -17,6 +17,14 @@ Route::post('iniciar-sesion', [\App\Http\Controllers\AuthController::class, 'aut
     ->name('auth.authenticate')
     ;
 
+Route::get('registrarse', [\App\Http\Controllers\AuthController::class, 'register'])
+    ->name('auth.register')
+    ;
+
+Route::post('registrarse', [\App\Http\Controllers\AuthController::class, 'store'])
+    ->name('auth.store')
+    ;
+
 Route::post('cerrar-sesion', [\App\Http\Controllers\AuthController::class, 'logout'])
     ->name('auth.logout')
     ;
@@ -113,8 +121,6 @@ Route::delete('juegos/{id}/eliminar', [\App\Http\Controllers\GamesController::cl
 ->middleware('auth')
 ->whereNumber('id');
 
-
-
 Route::get('juegos/editar/{id}', [\App\Http\Controllers\GamesController::class, 'edit'])
 ->name('games.edit')
 ->middleware('auth')
@@ -127,7 +133,6 @@ Route::put('juegos/editar/{id}', [\App\Http\Controllers\GamesController::class, 
 
 
 // USUARIOS
-
 
 Route::get('usuarios/crear', [\App\Http\Controllers\UserController::class, 'create'])
 ->name('user.create')

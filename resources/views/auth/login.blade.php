@@ -26,10 +26,9 @@
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary w-75 " >Ingresar</button>
                     </div>
-                    
                 </form>
                 <div class="d-flex justify-content-center">
-                        <a type="submit" class="btn border border-secondary m-2" >Registrarse</a>
+                    <a href="{{route('auth.register')}}" class="btn border border-secondary m-2 w-75" >Registrarse</a>
                 </div>
         </div>
     </section>

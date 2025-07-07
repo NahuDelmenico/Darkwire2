@@ -30,7 +30,7 @@ class UserController extends Controller
             $request->validate([
                 'name'      => 'required|min:2|max:255',
                 'email'     => 'required|email|unique:users,email',
-                'password'  => 'required|min:4|max:32|confirmed',
+                'password'  => 'required|min:4|max:32|confirmed'
             ], [
                 'name.required' => 'El nombre debe tener un valor',
                 'name.min' => 'El nombre debe tener al menos :min caracteres',
@@ -52,6 +52,9 @@ class UserController extends Controller
             // Encriptar contraseña
             $input['password'] = Hash::make($request->password);
             
+            // Crear rol
+            $input['rol'] = 'Usuario';
+
             // Crear usuario
             User::create($input);
             
