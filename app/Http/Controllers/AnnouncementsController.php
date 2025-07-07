@@ -42,7 +42,8 @@ class AnnouncementsController extends Controller
                 'title'         =>'required|min:2',
                 'subtitle'      =>'required|min:2',
                 'description'   =>'required|max:3000',
-                'author'        =>'required|min:2'
+                'author'        =>'required|min:2',
+                'cover' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
             ],[
                 'title.required'=>'El titulo debe tener un valor',
                 'title.min'=>'El titulo debe tener al menos :min caracteres',
@@ -59,7 +60,7 @@ class AnnouncementsController extends Controller
             ]);
             $input = $request->all();
             if ($request->hasFile('cover')) {
-                $input['file'] = $request->file('cover')->store('covers', 'public');
+                $input['cover'] = $request->file('cover')->store('covers', 'public');
             }
 
             Announcement::create($request->all());
@@ -110,6 +111,7 @@ class AnnouncementsController extends Controller
                 'subtitle'      =>'required|min:2',
                 'description'   =>'required|max:3000',
                 'author'        =>'required|min:2'
+                'cover' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
             ],[
                 'title.required'=>'El titulo debe tener un valor',
                 'title.min'=>'El titulo debe tener al menos :min caracteres',
@@ -124,6 +126,12 @@ class AnnouncementsController extends Controller
                 'author.min'=>'El autor debe tener al menos :min caracteres',
 
             ]);
+
+            $input = $request->all();
+            if ($request->hasFile('cover')) {
+                $input['cover'] = $request->file('cover')->store('covers', 'public');
+            }
+
 
             $announcement->update($request->all());
 
