@@ -79,16 +79,19 @@ Route::put('novedades/editar/{id}', [\App\Http\Controllers\AnnouncementsControll
 
 // ADMIN
 
-Route::middleware(['auth', 'admin'])->group(function () {
+
     Route::get('admin/usuarios', [\App\Http\Controllers\AdminController::class, 'users'])
-        ->name('admin.users');
+        ->name('admin.users')
+        ->middleware('auth');
     
     Route::get('admin/anuncios', [\App\Http\Controllers\AdminController::class, 'announcements'])
-        ->name('admin.announcements');
+        ->name('admin.announcements')
+        ->middleware('auth');
     
     Route::get('admin/juegos', [\App\Http\Controllers\AdminController::class, 'games'])
-        ->name('admin.games');
-});
+        ->name('admin.games')
+        ->middleware('auth');
+
 
 // JUEGOS
 

@@ -42,6 +42,10 @@
                             <li class="nav-item">
                                 <a href="{{ route('admin.users') }}" class="btn btn-warning">Administrar</a>
                             </li>
+                        @else
+                            <li class="nav-item">
+                                <a href="{{route('user.edit', ['id' => auth()->user()->id])}}" class="btn btn-primary">Mi cuenta</a>
+                            </li>
                         @endif
                     <li class="nav-item">
                         <form action="{{ route('auth.logout') }}" method="POST">
