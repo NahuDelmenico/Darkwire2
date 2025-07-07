@@ -24,9 +24,13 @@
                         <input type="password" id="password" name="password" class="form-control">
                     </div>
                     <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary " >Ingresar</button>
+                        <button type="submit" class="btn btn-primary w-75 " >Ingresar</button>
                     </div>
+                    
                 </form>
+                <div class="d-flex justify-content-center">
+                        <a type="submit" class="btn border border-secondary m-2" >Registrarse</a>
+                </div>
         </div>
     </section>
 </x-layout>
