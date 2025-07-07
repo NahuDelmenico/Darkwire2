@@ -10,18 +10,20 @@
                     <div class="col-lg-8">
                         <div class="">
                             <div class="">
-                            
-                                <img class=" img-fluid w-100" src="https://imgs.search.brave.com/bxlM2Gy6pDnrbrkbgHqfr_7IK-qA5cMHGGwALM0Y_Hw/rs:fit:860:0:0:0/g:ce/aHR0cDovL2ltYWdl/Lm5vZWxzaGFjay5j/b20vZmljaGllcnMv/MjAxOS80NC81LzE1/NzI2MjE1MzItcmRy/Mi1wYy1zY3JlZW5z/aG90LTAzOC5qcGc" 
-                                    alt="{{ $game->name }}">
+                                
+                            <img 
+                            src="{{ \Illuminate\Support\Facades\Storage::url($game->cover) }}"                                     
+                            class="img-fluid w-100"
+                            alt="{{ $game->name }}">
                             </div>
                         </div>
                     </div>
                     
                     <div class="col-lg-4">
                         <div class="game-info-sidebar">
-                            <div class="game-logo mb-3 d-flex">
-                                <img src="https://e7.pngegg.com/pngimages/392/551/png-clipart-grand-theft-auto-five-illustration-grand-theft-auto-v-grand-theft-auto-san-andreas-gta-5-online-gunrunning-playstation-4-mod-gta-miscellaneous-emblem-thumbnail.png" 
-                                                             class="rounded w-25" 
+                            <div class="me-3 d-flex" style="width: 60px; height: 60px;">
+                                <img src="{{ \Illuminate\Support\Facades\Storage::url($game->logo) }}" 
+                                                             class="rounded" 
                                                              style="width: 100%; height: 100%; object-fit: cover;" 
                                                              alt="{{ $game->name }}">
                                 <h1 class="fs-5 p-3 align-center">{{ $game->name }}</h1>
