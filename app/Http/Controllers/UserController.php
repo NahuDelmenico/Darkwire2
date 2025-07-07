@@ -106,18 +106,27 @@ class UserController extends Controller
             $user = User::findOrFail($id);
 
             $request->validate([
-                'name'         =>'required|min:2',
-                'email'      =>'required|email|min:8',
+                'name'     => 'required|min:2',
+                'email'    => 'required|email|min:8|unique:users,email,' . $id,
+                'password' => 'required|min:4|max:32'
             ],[
                 'name.required' => 'El nombre debe tener un valor',
                 'name.min' => 'El nombre debe tener al menos :min caracteres',
                 
                 'email.required' => 'El email debe tener un valor',
                 'email.email' => 'El email debe tener un formato válido',
-                'email.unique' => 'Este email ya está registrado'
+                'email.min' => 'El email debe tener al menos :min caracteres',
+                'email.unique' => 'Este email ya está registrado',
+                
+                'password.required' => 'La contraseña debe tener un valor',
+                'password.min' => 'La contraseña debe tener al menos :min caracteres',
+                'password.max' => 'La contraseña no puede tener más de :max caracteres'
             ]);
+            
+            $input = $request->only('name','email');
+            $input['password'] = Hash::make($request->password);
 
-            $user->update($request->all());
+            $user->update($input);
             
             return redirect()
             ->route('admin.users')

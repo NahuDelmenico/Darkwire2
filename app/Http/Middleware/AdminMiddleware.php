@@ -11,8 +11,9 @@ class AdminMiddleware
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Auth::check() || !Auth::user()->rol == 'Administrador') {
-            abort(403, 'Acceso denegado. Se requieren permisos de administrador.');
+        if (!Auth::check() || !Auth::user()->isAdmin()) {
+            return redirect()
+            ->route('home');
         }
 
         return $next($request);

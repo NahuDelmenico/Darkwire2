@@ -36,6 +36,24 @@
                     @enderror
                 </div>
 
+                <div class="mb-3">
+                    <label class="form-label" for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror"
+                    @error('password') aria-invalid="true" aria-describedby="error-password" @enderror required>
+                    @error('password')
+                        <div id="error-password" class="text-danger">{{$message}}</div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="password_confirmation">Confirmar Contraseña</label>
+                    <input type="password" id="password_confirmation" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror"
+                    @error('password_confirmation') aria-invalid="true" aria-describedby="error-password-confirmation" @enderror required>
+                    @error('password_confirmation')
+                        <div id="error-password-confirmation" class="text-danger">{{$message}}</div>
+                    @enderror
+                </div>
+
                 <div>
                     <button type="submit" class="btn btn-primary">Confirmar Cambios</button>
                 </div>
