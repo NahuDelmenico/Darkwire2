@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Storage;
 use App\Models\Announcement;
 use Illuminate\Http\Request;
 
@@ -36,14 +36,13 @@ class AnnouncementsController extends Controller
         }
 
     public function store(Request $request)
-        {
-            
-            $request->validate([
-                'title'         =>'required|min:2',
-                'subtitle'      =>'required|min:2',
-                'description'   =>'required|max:3000',
-                'author'        =>'required|min:2'
-            ],[
+    {
+        $request->validate([
+            'title'         => 'required|min:2',
+            'subtitle'      => 'required|min:2',
+            'description'   => 'required|max:3000',
+            'author'        => 'required|min:2',
+        ],[
                 'title.required'=>'El titulo debe tener un valor',
                 'title.min'=>'El titulo debe tener al menos :min caracteres',
                 
@@ -59,19 +58,16 @@ class AnnouncementsController extends Controller
             ]);
             $input = $request->all();
             if ($request->hasFile('cover')) {
-                $input['cover'] = $request->file('cover')->store('covers', 'public');
+                $input['file'] = $request->file('cover')->store('covers', 'public');
             }
 
-            Announcement::create($request->all());
+        Announcement::create($input);
 
-            
-            return redirect()
-            ->route('admin.announcements')
-            ->with([
-                'feedback.message' => 'La noticia <b>' . e($request->title) . '</b> fue <b>publicada</b> exitosamente',
-                'feedback.type' => 'success' // success, error, warning, info
-            ]);
-        }
+        return redirect()->route('admin.announcements')->with([
+            'feedback.message' => 'La noticia <b>' . e($request->title) . '</b> fue <b>publicada</b> exitosamente',
+            'feedback.type' => 'success'
+        ]);
+    }
 
         public function destroy(int $id){
             
