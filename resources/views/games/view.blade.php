@@ -2,38 +2,29 @@
     <x-slot:title>{{ $game->name }}</x-slot:title>
 
     <div class="game-page">
-        <!-- Breadcrumb -->
-        <div class="breadcrumb-section">
-            <div class="container">
-                <nav class="breadcrumb-nav">
-                    <a href="{{ route('games.index') }}" class="breadcrumb-link">Todos los juegos</a>
-                    <span class="breadcrumb-separator">></span>
-                    <a href="#" class="breadcrumb-link">CATEGORIA</a>
-                    <span class="breadcrumb-separator">></span>
-                    <span class="breadcrumb-current">{{ $game->name }}</span>
-                </nav>
-            </div>
-        </div>
+        
 
-        <!-- Hero Section -->
-        <div class="game-hero">
+        <div class="">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8">
-                        <div class="game-media">
-                            <div class="main-image">
-                                <!-- Imagen Principal Cargada -->
-                                <img src="https://imgs.search.brave.com/bxlM2Gy6pDnrbrkbgHqfr_7IK-qA5cMHGGwALM0Y_Hw/rs:fit:860:0:0:0/g:ce/aHR0cDovL2ltYWdl/Lm5vZWxzaGFjay5j/b20vZmljaGllcnMv/MjAxOS80NC81LzE1/NzI2MjE1MzItcmRy/Mi1wYy1zY3JlZW5z/aG90LTAzOC5qcGc" 
-                                    alt="{{ $game->name }}" class="img-fluid">
+                        <div class="">
+                            <div class="">
+                            
+                                <img class=" img-fluid w-100" src="https://imgs.search.brave.com/bxlM2Gy6pDnrbrkbgHqfr_7IK-qA5cMHGGwALM0Y_Hw/rs:fit:860:0:0:0/g:ce/aHR0cDovL2ltYWdl/Lm5vZWxzaGFjay5j/b20vZmljaGllcnMv/MjAxOS80NC81LzE1/NzI2MjE1MzItcmRy/Mi1wYy1zY3JlZW5z/aG90LTAzOC5qcGc" 
+                                    alt="{{ $game->name }}">
                             </div>
                         </div>
                     </div>
                     
                     <div class="col-lg-4">
                         <div class="game-info-sidebar">
-                            <div class="game-logo mb-3">
-                                <img src="{{ $game->logo ?? '/images/default-logo.png' }}" 
-                                    alt="{{ $game->name }}" class="img-fluid">
+                            <div class="game-logo mb-3 d-flex">
+                                <img src="https://e7.pngegg.com/pngimages/392/551/png-clipart-grand-theft-auto-five-illustration-grand-theft-auto-v-grand-theft-auto-san-andreas-gta-5-online-gunrunning-playstation-4-mod-gta-miscellaneous-emblem-thumbnail.png" 
+                                                             class="rounded w-25" 
+                                                             style="width: 100%; height: 100%; object-fit: cover;" 
+                                                             alt="{{ $game->name }}">
+                                <h1 class="fs-5 p-3 align-center">{{ $game->name }}</h1>
                             </div>
                             
                             <div class="game-description mb-4">
@@ -41,26 +32,28 @@
                             </div>
 
                             <div class="game-tags mb-4">
-                                <span class="tag">{{ $game->category }}</span>
+                                <span class="tag">{{ $game->category_fk }}</span>
                                 <span class="tag">Acción</span>
                                 <span class="tag">Aventura</span>
                                 <span class="tag">Un jugador</span>
                             </div>
 
-                            <div class="purchase-section">
+                            <div class="bg-success rounded">
                                 <div class="price-section mb-3">
                                     @if($game->price > 0)
-                                        <div class="discount-badge">-40%</div>
-                                        <div class="price-info">
-                                            <span class="original-price">${{ number_format($game->price * 1.4, 2) }}</span>
+                                        
+                                        <div class="price-info p-3">
+                                            
                                             <span class="current-price">${{ number_format($game->price, 2) }}</span>
+                                            
                                         </div>
                                     @else
                                         <div class="free-badge">GRATIS</div>
                                     @endif
                                 </div>
                                 
-                                <div class="purchase-buttons">
+                            </div>
+                            <div >
                                     <button class="btn btn-primary btn-lg w-100 mb-2">
                                         <i class="fas fa-cart-plus me-2"></i>
                                         Añadir al carrito
@@ -70,14 +63,12 @@
                                         Añadir a lista de deseados
                                     </button>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Game Details Section -->
         <div class="game-details">
             <div class="container">
                 <div class="row">
@@ -187,7 +178,6 @@
             </div>
         </div>
 
-        <!-- Similar Games Section -->
         <div class="similar-games">
             <div class="container">
                 <h2 class="section-title">Juegos similares</h2>

@@ -15,8 +15,11 @@ return new class extends Migration
             $table->id('game_id');
             $table->String('name');
             $table->String('description');
+            $table->tinyInteger('discount')->nullable();
             $table->double('price');
             $table->date('release_at');
+            $table->string('logo')->nullable();
+            $table->string('cover')->nullable();
             $table->timestamps();
         });
     }

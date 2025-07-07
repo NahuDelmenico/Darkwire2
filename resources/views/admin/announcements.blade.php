@@ -43,9 +43,10 @@
                         <p class="text-muted mb-0">Administra los anuncios y novedades del sistema</p>
                     </div>
                     <div class="d-flex align-items-center gap-3">
-                        <div class="text-center">
-                            <div class="badge bg-info fs-6">{{ $announcements->count() }}</div>
-                            <small class="text-muted d-block">Total</small>
+                        <div class="text-center d-flex">
+                            
+                        <div class="badge border border-info text-muted  fs-5"> Total de Anuncios: {{ $announcements->count() }}</div>
+                            
                         </div>
                         <a class="btn btn-primary" href="{{ route('announcements.create') }}">
                             <i class="fas fa-plus me-2"></i>Crear nuevo anuncio

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Game;
+use App\Models\Gamemode;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
@@ -35,11 +36,11 @@ class GamesController extends Controller
 
     public function create()
     {
-
+        $gamemodes = Gamemode::all();
         $categories = Category::all();
 
         return view('games.create',[
-
+            'gamemodes'=> $gamemodes,
             'categories' => $categories
 
         ]);
@@ -52,7 +53,9 @@ class GamesController extends Controller
                 'name'         =>'required|min:2',
                 'description'      =>'required|min:2',
                 'price'   =>'required|max:3000',
+                
                 'release_at' => 'required',
+                'gamemode_fk' => 'required',
                 'category_fk'        =>'required',
             ],[
                 'name.required'=>'El nombre debe tener un valor',
@@ -62,6 +65,10 @@ class GamesController extends Controller
                 'title.max'=>'La descripcion debe tener :max caracteres como mucho',
 
                 'price.required'=>'Debe ingresar el precio',
+
+                
+
+                'gamemode_fk.required'=>'Debe ingresar el modo de juego',
 
                 'category_fk.required'=>'Debe ingresar la categoria',
 
@@ -114,9 +121,11 @@ class GamesController extends Controller
         public function edit(int $id)
         {
             $categories = Category::all();
+            $gamemodes = Gamemode::all();
 
             return view('games.edit', [
                 'categories' => $categories,
+                'gamemodes' => $gamemodes,
                 'game' => Game::findOrFail($id)
             ]);
         }
@@ -129,7 +138,9 @@ class GamesController extends Controller
                 'name'         =>'required|min:2',
                 'description'      =>'required|min:2',
                 'price'   =>'required|max:3000',
+                
                 'release_at' => 'required',
+                'gamemode_fk' => 'required',
                 'category_fk'        =>'required',
             ],[
                 'name.required'=>'El nombre debe tener un valor',
@@ -139,6 +150,10 @@ class GamesController extends Controller
                 'title.max'=>'La descripcion debe tener :max caracteres como mucho',
 
                 'price.required'=>'Debe ingresar el precio',
+
+                
+
+                'category_fk.required'=>'Debe ingresar el modo de juego',
 
                 'category_fk.required'=>'Debe ingresar la categoria',
 

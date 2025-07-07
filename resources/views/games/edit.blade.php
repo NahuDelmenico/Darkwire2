@@ -46,6 +46,15 @@
                 </div>
 
                 <div class="mb-3">
+                    <label class="form-label" for="discount">Descuento (Valores de 0 a 100)</label> 
+                    <input type="number" id="discount" name="discount" class="form-control @error('discount') is-invalid @enderror"
+                    @error('discount') arial-invalid="true" arial-errornessage="error-discount" @enderror value="{{old('discount' , $game->discount)}}">
+                    @error('discount')
+                        <div id="error-discount" class="text-danger">{{$message}}</div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
                     <label class="form-label" for="release_at">Fecha de lanzamiento</label>
                     <input type="date" id="release_at" name="release_at" class="form-control @error('release_at') is-invalid @enderror"
                     @error('release_at') arial-invalid="true" arial-errornessage="error-release_at" @enderror value="{{old('release_at', $game->release_at)}}">
@@ -76,6 +85,31 @@
 
                 @error('category_fk')
                     <div id="error-category_fk" class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="gamemode_fk">Modo de Juego*</label>
+                <select 
+                    id="gamemode_fk" 
+                    name="gamemode_fk" 
+                    class="form-select @error('gamemode_fk') is-invalid @enderror" 
+                    aria-label="Seleccionar categoría"
+                    @error('gamemode_fk') 
+                        aria-invalid="true" 
+                        aria-describedby="error-gamemode_fk" 
+                    @enderror
+                >
+                    <option value="" disabled {{ old('gamemode_fk', $game->gamemode_fk) ? '' : 'selected' }}>Seleccione una categoría</option>
+                    @foreach($gamemodes as $g)
+                        <option value="{{ $g->gamemode_id }}" {{ old('gamemode_fk', $game->gamemode_fk) == $g->gamemode_id ? 'selected' : '' }}>
+                            {{ $g->name }}
+                        </option>
+                    @endforeach
+                </select>
+
+                @error('gamemode_fk')
+                    <div id="error-gamemode_fk" class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
 
