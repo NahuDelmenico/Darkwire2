@@ -123,7 +123,9 @@
                                         </td>
                                         <td>{{ $user->email }}</td>
                                         <td>
-                                            <span class="badge bg-success">Usuario</span>
+                                            <span class="badge {{ $user->rol == 'Administrador' ? 'bg-primary' : 'bg-success' }}">
+                                                {{ $user->rol }}
+                                            </span>
                                         </td>
                                         <td>
                                             <span class="badge bg-success">Activo</span>
