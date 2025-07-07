@@ -38,9 +38,11 @@
 
                 <ul class="navbar-nav ms-auto">
                     @auth
-                    <li class="nav-item">
-                        <a href="{{ route('admin.users') }}" class="btn btn-warning">Administrar</a>
-                    </li>
+                        @if(auth()->user()->rol == "Administrador")
+                            <li class="nav-item">
+                                <a href="{{ route('admin.users') }}" class="btn btn-warning">Administrar</a>
+                            </li>
+                        @endif
                     <li class="nav-item">
                         <form action="{{ route('auth.logout') }}" method="POST">
                         @csrf
