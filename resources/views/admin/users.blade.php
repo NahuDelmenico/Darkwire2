@@ -29,8 +29,16 @@
             <!-- Contenido principal -->
             <main class="col-12 col-md-9 col-lg-10 bg-dark text-white py-4">
 
+                @if(session('feedback.message'))
+                    <div class="alert alert-{{ session('feedback.type', 'success') }} alert-dismissible fade show" role="alert">
+                        {!! session('feedback.message') !!}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                @endif
+
                 <!-- Header con título y estadísticas -->
                 <div class="d-flex justify-content-between align-items-center mb-4">
+
                     <div>
                         <h2 class="mb-1">Gestión de Usuarios</h2>
                         <p class="text-muted mb-0">Administra los usuarios del sistema</p>

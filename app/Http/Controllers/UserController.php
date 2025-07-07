@@ -57,7 +57,10 @@ class UserController extends Controller
             
             return redirect()
                 ->route('admin.users')
-                ->with('feedback.message', 'El usuario <b>' . e($request->name) . '</b> fue <b>creado</b> exitosamente');
+                ->with([
+                'feedback.message' => 'El usuario <b>' . e($request->name) . '</b> fue <b>creado</b> exitosamente',
+                'feedback.type' => 'success' // success, error, warning, info
+            ]);
         }
         
         public function delete(int $id)
@@ -76,9 +79,12 @@ class UserController extends Controller
             $user->delete($id);
 
 
-            return redirect()
+        return redirect()
             ->route('admin.users')
-            ->with('feedback.message' , 'La noticia <b>'. e($user->name) .'</b> fue <b>eliminada</b> exitosamente');
+            ->with([
+                'feedback.message' => 'El usuario <b>' . e($user->name) . '</b> fue <b>eliminado</b> exitosamente',
+                'feedback.type' => 'danger' // success, error, warning, info
+            ]);
 
         }
 
@@ -112,6 +118,9 @@ class UserController extends Controller
             
             return redirect()
             ->route('admin.users')
-            ->with('feedback.message' , 'El usuario <b>'. e($request->title).'</b> fue <b>actualizo</b> exitosamente');
+            ->with([
+                'feedback.message' => 'El usuario <b>' . e($request->title) . '</b> fue <b>actualizado</b> exitosamente',
+                'feedback.type' => 'info' // success, error, warning, info
+            ]);
         }
 }
