@@ -59,7 +59,7 @@ class AnnouncementsController extends Controller
             ]);
             $input = $request->all();
             if ($request->hasFile('cover')) {
-                $input['file'] = $request->file('cover')->store('covers', 'public');
+                $input['cover'] = $request->file('cover')->store('covers', 'public');
             }
 
             Announcement::create($request->all());
