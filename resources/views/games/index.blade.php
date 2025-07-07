@@ -47,7 +47,7 @@
         @foreach($games as $game)
             <div class="col">
                 <div class="card h-100 shadow-lg  mb-5 bg-body-tertiary rounded ">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg" class="card-img-top game-img" alt="Red Dead Redemption 2">
+                    <img src="{{ \Illuminate\Support\Facades\Storage::url($game->cover) }}" class="card-img-top game-img" alt="{{ $game->name }}">
                     <div class="card-body">
                         <h5 class="card-title">{{$game->name}}</h5>
                         <p class="card-text">{{$game->description}}</p>

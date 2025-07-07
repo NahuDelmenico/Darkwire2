@@ -109,8 +109,18 @@
                                         <td class="ps-4">{{ $index + 1 }}</td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center me-3 fw-bold" style="width: 40px; height: 40px;">
-                                                    <i class="fas fa-bullhorn"></i>
+                                                <div class="me-3" style="width: 60px; height: 60px;">
+                                                    @if($announcement->cover)
+                                                        <img    
+                                                        src="{{ \Illuminate\Support\Facades\Storage::url($announcement->cover) }}" 
+                                                        class="img-fluid w-100 object-fit-cover h-100 rounded" 
+                                                        alt="{{ $announcement->cover_description }}">
+                                                    @else
+                                                        <div class="rounded bg-gradient d-flex align-items-center justify-content-center text-white fw-bold" 
+                                                             style="width: 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                                            <i class="fas fa-gamepad"></i>
+                                                        </div>
+                                                    @endif
                                                 </div>
                                                 <div>
                                                     <strong>{{ Str::limit($announcement->title, 40) }}</strong>

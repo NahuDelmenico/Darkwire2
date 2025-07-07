@@ -123,8 +123,8 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="me-3" style="width: 60px; height: 60px;">
-                                                    @if($game->cover_image)
-                                                        <img src="{{ asset('storage/' . $game->cover_image) }}" 
+                                                    @if($game->logo)
+                                                        <img src="{{ \Illuminate\Support\Facades\Storage::url($game->logo) }}" 
                                                              class="rounded" 
                                                              style="width: 100%; height: 100%; object-fit: cover;" 
                                                              alt="{{ $game->name }}">

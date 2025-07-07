@@ -7,6 +7,7 @@ use App\Models\Game;
 use App\Models\Gamemode;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GamesController extends Controller
 {
@@ -44,6 +45,8 @@ class GamesController extends Controller
             'categories' => $categories
 
         ]);
+
+
     }
 
     public function store(Request $request)
@@ -77,12 +80,16 @@ class GamesController extends Controller
 
             ]);
             
-            //$input = $request->all();
-            //if ($request->hasFile('cover')) {
-            //    $input['file'] = $request->file('cover')->store('covers', 'public');
-            //}
+            $input = $request->all();
+            if ($request->hasFile('cover')) {
+                $input['cover'] = $request->file('cover')->store('covers', 'public');
+            }
 
-            Game::create($request->all());
+            if ($request->hasFile('logo')) {
+                $input['logo'] = $request->file('logo')->store('logos', 'public');
+            }
+
+            Game::create($input);
 
             
             return redirect()
@@ -132,7 +139,7 @@ class GamesController extends Controller
 
         public function update(Request $request, int $id)
         {
-            $game = Game::findOrFail($id);
+            
 
             $request->validate([
                 'name'         =>'required|min:2',
@@ -161,8 +168,31 @@ class GamesController extends Controller
                 
 
             ]);
+            $game = Game::findOrFail($id);  
 
-            $game->update($request->all());
+            $input = $request->except('_token', '_method', 'cover', 'logo');
+            $oldCover = $game->cover;
+
+            if ($request->hasFile('cover')) {
+                $input['cover'] = $request->file('cover')->store('covers', 'public');
+            
+                if ($oldCover && Storage::disk('public')->exists($oldCover)) {
+                    Storage::disk('public')->delete($oldCover);
+                }
+
+            }
+
+            $oldLogo = $game->logo;
+            if ($request->hasFile('logo')) {
+                $input['logo'] = $request->file('logo')->store('covers', 'public');
+            
+                if ($oldLogo && Storage::disk('public')->exists($oldLogo)) {
+                    Storage::disk('public')->delete($oldLogo);
+                }
+
+            }
+
+            $game->update($input);
             
             return redirect()
             ->route('admin.games')

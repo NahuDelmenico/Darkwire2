@@ -14,7 +14,7 @@
         @endif
 
         <div class="d-flex justify-content-center">
-            <form action="{{route('announcements.update',['id'=> $announcement -> announcement_id])}}" class="w-75" method="POST">
+            <form action="{{route('announcements.update',['id'=> $announcement -> announcement_id])}}" class="w-75" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
