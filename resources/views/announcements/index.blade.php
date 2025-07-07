@@ -19,9 +19,13 @@
             @foreach($announcements as $announcement)
 
             <div class="card d-flex flex-row mb-4 shadow-lg  mb-5 bg-body-tertiary rounded" style="width: 75%; height: 250px;">
-
-                <img src="{{ asset('images/image.png') }}" class="img-fluid w-25 rounded-start" alt="Imagen">
-
+                @if($announcement->cover)
+                <img    src="{{ \Illuminate\Support\Facades\Storage::url($announcement->cover) }}" 
+                        class="img-fluid w-25 rounded-start" 
+                        alt="{{ $announcement->cover_description }}">
+                @else
+                    <p>No cover image</p>
+                @endif
                 <div class="card-body d-flex flex-row w-75">
 
                     <div class="w-75  p-3 h-100 d-flex flex-column">

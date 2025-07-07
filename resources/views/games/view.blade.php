@@ -4,14 +4,13 @@
     <div class="game-page">
         
 
-        <!-- Hero Section -->
         <div class="">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="">
                             <div class="">
-                                <!-- Imagen Principal Cargada -->
+                            
                                 <img class=" img-fluid w-100" src="https://imgs.search.brave.com/bxlM2Gy6pDnrbrkbgHqfr_7IK-qA5cMHGGwALM0Y_Hw/rs:fit:860:0:0:0/g:ce/aHR0cDovL2ltYWdl/Lm5vZWxzaGFjay5j/b20vZmljaGllcnMv/MjAxOS80NC81LzE1/NzI2MjE1MzItcmRy/Mi1wYy1zY3JlZW5z/aG90LTAzOC5qcGc" 
                                     alt="{{ $game->name }}">
                             </div>
@@ -70,7 +69,6 @@
             </div>
         </div>
 
-        <!-- Game Details Section -->
         <div class="game-details">
             <div class="container">
                 <div class="row">
@@ -180,7 +178,6 @@
             </div>
         </div>
 
-        <!-- Similar Games Section -->
         <div class="similar-games">
             <div class="container">
                 <h2 class="section-title">Juegos similares</h2>
