@@ -95,18 +95,14 @@ class UserController extends Controller
 
         public function edit(int $id)
         {
-            
-            if (!Auth::check() || !Auth::user()->idCoincide()) {
+            if (!Auth::check() || !Auth::user()->idCoincide($id)) {
+                return redirect()
+                ->route('home');
+            } else {
                 return view('user.edit', [
                 'user' => User::findOrFail($id)
                 ]);
-            } else {
-                return redirect()
-                ->route('home');
             }
-        }
-
-            
         }
 
         public function update(Request $request, int $id)
