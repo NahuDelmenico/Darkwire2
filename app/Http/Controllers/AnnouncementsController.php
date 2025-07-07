@@ -56,12 +56,10 @@ class AnnouncementsController extends Controller
                 'author.min'=>'El autor debe tener al menos :min caracteres',
 
             ]);
-
-        $input = $request->all();
-        
-        if ($request->hasFile('cover')) {
-            $input['cover'] = $request->file('cover')->store('covers', 'public');
-        }
+            $input = $request->all();
+            if ($request->hasFile('cover')) {
+                $input['file'] = $request->file('cover')->store('covers', 'public');
+            }
 
         Announcement::create($input);
 
@@ -106,47 +104,49 @@ class AnnouncementsController extends Controller
         }
 
        public function update(Request $request, int $id)
-{
-    $request->validate([
-        'title'         => 'required|min:2',
-        'subtitle'      => 'required|min:2',
-        'description'   => 'required|max:3000',
-        'author'        => 'required|min:2'
-    ],[
-        'title.required'=>'El titulo debe tener un valor',
-        'title.min'=>'El titulo debe tener al menos :min caracteres',
-        
-        'subtitle.required'=>'El subtitulo debe tener un valor',
-        'subtitle.min'=>'El subtitulo debe tener al menos :min caracteres',
-        
-        'description.required'=>'La descripcion debe tener un valor',
-        'description.max'=>'La descripcion debe tener :max caracteres como mucho', // Corregido
-        
-        'author.required'=>'Debe ingresar el autor',
-        'author.min'=>'El autor debe tener al menos :min caracteres',
-    ]);
+        {
+            
+            
+            $request->validate([
+                'title'         => 'required|min:2',
+                'subtitle'      => 'required|min:2',
+                'description'   => 'required|max:3000',
+                'author'        => 'required|min:2'
+            ],[
+                'title.required'=>'El titulo debe tener un valor',
+                'title.min'=>'El titulo debe tener al menos :min caracteres',
+                
+                'subtitle.required'=>'El subtitulo debe tener un valor',
+                'subtitle.min'=>'El subtitulo debe tener al menos :min caracteres',
+                
+                'description.required'=>'La descripcion debe tener un valor',
+                'description.max'=>'La descripcion debe tener :max caracteres como mucho', // Corregido
+                
+                'author.required'=>'Debe ingresar el autor',
+                'author.min'=>'El autor debe tener al menos :min caracteres',
+            ]);
 
-    $announcement = Announcement::findOrFail($id);
-    
-    $input = $request->except('_token', '_method', 'cover');
-    $oldCover = $announcement->cover;
-    
-    if ($request->hasFile('cover')) {
-        $input['cover'] = $request->file('cover')->store('covers', 'public');
-        
-        // Eliminar la imagen anterior si existe
-        if ($oldCover && Storage::disk('public')->exists($oldCover)) {
-            Storage::disk('public')->delete($oldCover); // ✅ Especificar el disco
+            $announcement = Announcement::findOrFail($id);
+            
+            $input = $request->except('_token', '_method', 'cover');
+            $oldCover = $announcement->cover;
+            
+            if ($request->hasFile('cover')) {
+                $input['cover'] = $request->file('cover')->store('covers', 'public');
+                
+                // Eliminar la imagen anterior si existe
+                if ($oldCover && Storage::disk('public')->exists($oldCover)) {
+                    Storage::disk('public')->delete($oldCover);
+                }
+            }
+            
+            $announcement->update($input);
+            
+        return redirect()
+            ->route('admin.announcements')
+            ->with([
+                'feedback.message' => 'La noticia <b>' . e($announcement->title) . '</b> fue <b>actualizada</b> exitosamente',
+                'feedback.type' => 'info'
+            ]);
         }
-    }
-    
-    $announcement->update($input);
-    
-    return redirect()
-        ->route('admin.announcements')
-        ->with([
-            'feedback.message' => 'La noticia <b>' . e($announcement->title) . '</b> fue <b>actualizada</b> exitosamente',
-            'feedback.type' => 'info'
-        ]);
-    }
 }

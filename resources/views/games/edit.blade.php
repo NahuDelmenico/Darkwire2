@@ -113,6 +113,10 @@
                 @enderror
             </div>
 
+                <div class="mb-3">
+                    <label for="logo" class="form-label">Logo</label>
+                    <input class="form-control form-control-lg" id="logo" name="logo" type="file">
+                </div>    
 
                 <div class="mb-3">
                     <label for="cover" class="form-label">Portada</label>

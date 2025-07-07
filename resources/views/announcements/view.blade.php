@@ -17,7 +17,11 @@
                 </span>
             </div>
             <div class="w-100">
-                <img src="{{ asset('images/image.png') }}" class="img-fluid w-100" alt="Imagen">
+                <img 
+                src="{{ \Illuminate\Support\Facades\Storage::url($announcement->cover) }}" 
+                class="img-fluid w-100" 
+                alt="{{ $announcement->cover_description }}">
+                
             </div>
             <div class="bg-body-secondary p-5">
                 <p>{{ $announcement->description}}</p>
