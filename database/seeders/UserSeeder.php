@@ -16,6 +16,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         DB::table('users')-> insert([
+            [
             'id'        => 1, 
             'name'      => 'admin', 
             'email'     => 'user@admin.com', 
@@ -23,6 +24,15 @@ class UserSeeder extends Seeder
             'rol'    => 'Administrador',
             'created_at' => now(), 
             'updated_at' => now()
-        ]);
+        ],[
+            'id'        => 2, 
+            'name'      => 'usuario', 
+            'email'     => 'usuario@gmail.com', 
+            'password'  => Hash::make('1234'),
+            'rol'    => 'Usuario',
+            'created_at' => now(), 
+            'updated_at' => now()
+        ]
+    ]);
     }
 }

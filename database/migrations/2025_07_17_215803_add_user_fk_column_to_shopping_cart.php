@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('shopping_cart', function (Blueprint $table) {
-            $table->unsignedTinyInteger('users_fk');
-            $table->foreign('users_fk')->references('id')->on('users');
+            $table->unsignedBigInteger('user_fk');
+            $table->foreign('user_fk')->references('id')->on('users');
         });
     }
 
@@ -23,7 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('shopping_cart', function (Blueprint $table) {
-             $table->dropColumn('users_fk');
+             $table->dropColumn('user_fk');
         });
     }
 };

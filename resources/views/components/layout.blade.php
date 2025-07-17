@@ -46,19 +46,8 @@
                             <li class="nav-item">
                                 <a href="{{route('user.edit', ['id' => auth()->user()->id])}}" class="btn btn-primary">Mi cuenta</a>
                             </li>
-                            <li>
-                                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button>
-
-                                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                                    <div class="offcanvas-header">
-                                        <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                    </div>
-                                <div class="offcanvas-body">
-                                    ...
-                                </div>
-                                </div>
-                            </li>
+                            
+                            
                         @endif
                     <li class="nav-item">
                         <form action="{{ route('auth.logout') }}" method="POST">
