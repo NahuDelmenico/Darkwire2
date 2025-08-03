@@ -173,3 +173,24 @@ Route::get('juegos/{id}', [\App\Http\Controllers\GamesController::class, 'view']
 ->name('games.view')
 ->whereNumber('id'); 
 
+// CATALOGO
+
+Route::get('carrito', [\App\Http\Controllers\CartController::class, 'view'])
+    ->name('cart.view')
+    ->middleware('auth')
+;
+
+Route::post('carrito/añadir', [\App\Http\Controllers\CartController::class, 'add'])
+    ->name('cart.add')
+    ->middleware('auth')
+;
+
+Route::delete('carrito/eliminar/{id}', [\App\Http\Controllers\CartController::class, 'remove'])
+    ->name('cart.remove')
+    ->middleware('auth')
+;
+
+Route::delete('carrito/vaciar', [\App\Http\Controllers\CartController::class, 'clear'])
+    ->name('cart.clear')
+    ->middleware('auth')
+;

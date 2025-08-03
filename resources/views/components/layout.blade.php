@@ -47,13 +47,11 @@
                                 <a href="{{route('user.edit', ['id' => auth()->user()->id])}}" class="btn btn-primary">Mi cuenta</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('user.edit', ['id' => auth()->user()->id])}}" class="btn btn-primary">Ver carrito</a>
+                                <a href="{{route('cart.view')}}" class="nav-link btn-link">Ver carrito</a>
                             </li>
-                            
-                            
                         @endif
                     <li class="nav-item">
-                        <form action="{{ route('auth.logout') }}" method="POST">
+                        <form action="{{  route('auth.logout') }}" method="POST">
                         @csrf
                         <button type="submit" class="nav-link btn btn-link">
                             {{ auth()->user()->email }} (Cerrar Sesión)

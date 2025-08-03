@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 
 class GamesController extends Controller
 {
-     public function index()
+    public function index()
         {
             $games = Game::all();
 
