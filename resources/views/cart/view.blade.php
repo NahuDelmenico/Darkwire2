@@ -12,6 +12,13 @@
                 </div>
             </section>
 
+            @if(session('feedback.message'))
+            <div class="alert alert-{{ session('feedback.type', 'success') }} alert-dismissible fade show" role="alert">
+                {!! session('feedback.message') !!}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            @endif
+
             <!-- Contenido del Carrito -->
             <section class="row">
                 <!-- Lista de Juegos en el Carrito -->
@@ -42,7 +49,7 @@
                                     <p class="text-muted mb-2">
                                         <small>
                                             <i class="bi bi-tag me-1"></i>
-                                            {{ $item['categoria'] ?? 'Categoría' }}
+                                            {{ $item['category'] ?? 'Categoría' }}
                                         </small>
                                     </p>
                                     <p class="text-muted mb-0">
@@ -57,11 +64,14 @@
                                             ${{ number_format($item['price'] ?? 0, 2) }}
                                         </span>
                                     </div>
-                                    <button class="btn btn-outline-danger btn-sm btn-remove"
-                                        data-item-id="{{ $item['id'] ?? $index }}"
-                                        title="Eliminar del carrito">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
+                                    <form action="{{route('cart.remove', ['id'=> $index] )}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-outline-danger btn-sm btn-remove"
+                                            title="Eliminar del carrito">
+                                            <i class="bi bi-trash">Eliminar</i>
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -129,10 +139,14 @@
                                 <i class="bi bi-credit-card me-2"></i>
                                 Proceder al Pago
                             </button>
-                            <button class="btn btn-outline-danger" id="btn-clear-cart">
-                                <i class="bi bi-trash me-2"></i>
-                                Vaciar Carrito
-                            </button>
+                            <form action="{{ route('cart.clear') }}" method="POST" class="d-grid">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-outline-danger" id="btn-clear-cart">
+                                    <i class="bi bi-trash me-2"></i>
+                                    Vaciar Carrito
+                                </button>
+                            </form>
                             @endif
                             <a href="{{ route('games.index') }}" class="btn btn-outline-warning">
                                 <i class="bi bi-arrow-left me-2"></i>
