@@ -46,6 +46,9 @@
                             <li class="nav-item">
                                 <a href="{{route('user.edit', ['id' => auth()->user()->id])}}" class="btn btn-primary">Mi cuenta</a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{route('user.edit', ['id' => auth()->user()->id])}}" class="btn btn-primary">Ver carrito</a>
+                            </li>
                         @endif
                     <li class="nav-item">
                         <form action="{{ route('auth.logout') }}" method="POST">
