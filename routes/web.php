@@ -180,14 +180,16 @@ Route::get('carrito', [\App\Http\Controllers\CartController::class, 'view'])
     ->middleware('auth')
 ;
 
-Route::post('carrito/añadir', [\App\Http\Controllers\CartController::class, 'add'])
+Route::post('carrito/añadir/{id}', [\App\Http\Controllers\CartController::class, 'add'])
     ->name('cart.add')
     ->middleware('auth')
+    ->whereNumber('id');
 ;
 
 Route::delete('carrito/eliminar/{id}', [\App\Http\Controllers\CartController::class, 'remove'])
     ->name('cart.remove')
     ->middleware('auth')
+    ->whereNumber('id');
 ;
 
 Route::delete('carrito/vaciar', [\App\Http\Controllers\CartController::class, 'clear'])

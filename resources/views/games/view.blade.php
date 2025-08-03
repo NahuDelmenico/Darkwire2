@@ -56,10 +56,13 @@
                                 
                             </div>
                             <div >
-                                    <button class="btn btn-primary btn-lg w-100 mb-2">
+                                <form action="{{ route('cart.add', ['id' => $game->game_id])}}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary btn-lg w-100 mb-2">
                                         <i class="fas fa-cart-plus me-2"></i>
                                         Añadir al carrito
                                     </button>
+                                </form>
                                     <button class="btn btn-outline-light w-100">
                                         <i class="fas fa-heart me-2"></i>
                                         Añadir a lista de deseados
